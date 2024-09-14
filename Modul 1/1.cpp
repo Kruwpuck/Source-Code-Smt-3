@@ -4,7 +4,7 @@ using namespace std;
 
 int main(){
     string nama, nim;
-    cout << "Siapa nama andaaa? ";
+    cout << "Siapa nama anda? ";
     cin >> nama;
     cout << "Berapa nim anda? ";
     cin >> nim;
