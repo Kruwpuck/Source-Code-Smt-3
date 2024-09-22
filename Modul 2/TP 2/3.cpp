@@ -12,3 +12,4 @@ int main(){
     cout << bil[0] + bil[1] + bil[2] << endl;
     return 0;
 }
+void Ihab_Hasanain_Akmal(){}
