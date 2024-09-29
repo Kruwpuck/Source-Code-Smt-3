@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1727623796 source:d:\kuliah\semester 3\struktur data\source-code-smt-3\modul 2\adt ssl\karyawan.cpp
+	"karyawan.h"
+
+1727624511 d:\kuliah\semester 3\struktur data\source-code-smt-3\modul 2\adt ssl\karyawan.h
+	<iostream>
+
+1727623687 source:d:\kuliah\semester 3\struktur data\source-code-smt-3\modul 2\adt ssl\main.cpp
+	"karyawan.h"
+
