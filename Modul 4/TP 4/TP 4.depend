@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1728148594 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 4\tp 4\main.cpp
+	<iostream>
+	"list.h"
+
+1728217710 d:\kuliah\semester 3\std\source-code-smt-3\modul 4\tp 4\list.h
+	<iostream>
+
+1728204886 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 4\tp 4\list.cpp
+	<iostream>
+	"list.h"
+
