@@ -21,10 +21,10 @@ struct List{
     address first;
 };
 
-void createList_103032330054(List &L);
-address allocate_103032330054(infotype x);
-void insertFirst_103032330054(List &L, address P);
-void printInfo_103032330054(List L);
+void createList_103032300018(List &L);
+address allocate_103032300018(infotype x);
+void insertFirst_103032300018(List &L, address P);
+void printInfo_103032300018(List L);
 
 
 

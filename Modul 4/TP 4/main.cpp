@@ -5,27 +5,27 @@ using namespace std;
 int main()
 {
     List L;
-    int masukkan=0;
+    int x=0;
     address P;
 
-    createList_103032330054(L);
-    cout << "Masukkan angka pertama: ";
-    cin >> masukkan;
-    P = allocate_103032330054(masukkan);
-    insertFirst_103032330054(L,P);
-    printInfo_103032330054(L);
+    createList_103032300018(L);
+    cout << "Masukkan angka 1: ";
+    cin >> x;
+    P = allocate_103032300018(x);
+    insertFirst_103032300018(L,P);
+    printInfo_103032300018(L);
 
 
-    cout << "Masukkan angka kedua: ";
-    cin >> masukkan;
-    P = allocate_103032330054(masukkan);
-    insertFirst_103032330054(L,P);
-    printInfo_103032330054(L);
+    cout << "Masukkan angka 2: ";
+    cin >> x;
+    P = allocate_103032300018(x);
+    insertFirst_103032300018(L,P);
+    printInfo_103032300018(L);
 
 
-    cout << "Masukkan angka ketiga: ";
-    cin >> masukkan;
-    P = allocate_103032330054(masukkan);
-    insertFirst_103032330054(L,P);
-    printInfo_103032330054(L);
+    cout << "Masukkan angka 3: ";
+    cin >> x;
+    P = allocate_103032300018(x);
+    insertFirst_103032300018(L,P);
+    printInfo_103032300018(L);
 }

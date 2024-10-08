@@ -3,11 +3,11 @@
 
 using namespace std;
 
-void createList_103032330054(List &L){
+void createList_103032300018(List &L){
     first(L) = NULL;
 }
 
-address allocate_103032330054(infotype x){
+address allocate_103032300018(infotype x){
     address p = new elmlist;
     info(p) = x;
     next(p) = NULL;
@@ -15,12 +15,12 @@ address allocate_103032330054(infotype x){
     return p;
 }
 
-void insertFirst_103032330054(List &L, address P){
+void insertFirst_103032300018(List &L, address P){
     next(P) = first(L);
     first(L) = P;
 }
 
-void printInfo_103032330054(List L){
+void printInfo_103032300018(List L){
     address p = first(L);
     while (p != NULL){
         cout << info(p) << ", ";

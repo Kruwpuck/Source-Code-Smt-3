@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1728389807 source:d:\smt 3\std\modul4\mod4\main.cpp
+	<iostream>
+	"list.h"
+	"lish.cpp"
+
+1728308451 d:\smt 3\std\modul4\mod4\list.h
+	<iostream>
+
+1728308473 d:\smt 3\std\modul4\mod4\lish.cpp
+	<iostream>
+	"list.h"
+
