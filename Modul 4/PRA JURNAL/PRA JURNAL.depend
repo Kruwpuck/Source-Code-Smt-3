@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1728413609 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 4\pra jurnal\main.cpp
+	"list.h"
+
+1728409288 d:\kuliah\semester 3\std\source-code-smt-3\modul 4\pra jurnal\list.h
+	<iostream>
+
+1728413902 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 4\pra jurnal\list.cpp
+	"list.h"
+
