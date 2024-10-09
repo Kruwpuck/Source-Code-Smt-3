@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1728267247 source:e:\kuliah salsa\smt 3\struktur data\tugas\c++\adt minggu 2\main.cpp
+	"karyawan.h"
+
+1728266192 e:\kuliah salsa\smt 3\struktur data\tugas\c++\adt minggu 2\karyawan.h
+	<iostream>
+
+1728313860 source:e:\kuliah salsa\smt 3\struktur data\tugas\c++\adt minggu 2\karyawan.cpp
+	"karyawan.h"
+
+1727623018 source:e:\kuliah salsa\smt 3\struktur data\tugas\c++\adt minggu 2\coba.cpp
+

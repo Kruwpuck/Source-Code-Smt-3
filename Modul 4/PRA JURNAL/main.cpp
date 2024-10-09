@@ -6,8 +6,9 @@ int main()
 {
     List L;
     address P,Q;
-    CreateList(L);
+
     infotype n,x;
+    CreateList(L);
     cout << "Masukkan berapa digit angka: ";
     cin >> n;
     for(int i = 0; i < n; i++){

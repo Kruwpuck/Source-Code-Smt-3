@@ -6,8 +6,9 @@ void CreateList(List &L){
 
 address allocate(infotype x){
     address p = new elmlist;
-    p->info = x;
     p->next = NULL;
+    p->info = x;
+
     return p;
 }
 
@@ -76,7 +77,7 @@ void DeleteAfter(List &L, address prec, address &P){
 
 address Search(List L, infotype x){
     address P = L.first;
-    while (P->next != NULL){
+    while (P != NULL){
         if (P->info == x){
             return P;
         }
@@ -88,8 +89,9 @@ address Search(List L, infotype x){
 void Show(List L){
     if (L.first != NULL){
         address P = L.first;
-        while (P->next != NULL){
-        cout << P->info << ", ";
+        while (P != NULL){
+            cout << P->info << ", ";
+            P=P->next;
     }
     }
 
