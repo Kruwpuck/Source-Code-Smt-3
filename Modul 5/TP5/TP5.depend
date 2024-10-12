@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1728729745 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 5\tp5\main.cpp
+	"SLL.h"
+
+1728720261 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 5\tp5\sll.h
+	<iostream>
+
+1728731503 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 5\tp5\sll.cpp
+	"SLL.h"
+
