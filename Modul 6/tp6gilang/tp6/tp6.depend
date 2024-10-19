@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1729328551 source:c:\c++ kuliah\tp6\main.cpp
+	<iostream>
+	"DLL.h"
+
+1729330833 c:\c++ kuliah\tp6\dll.h
+	<iostream>
+
+1729327688 source:c:\c++ kuliah\tp6\dll.cpp
+	<iostream>
+	"DLL.h"
+
