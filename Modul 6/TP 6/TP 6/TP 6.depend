@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1729358474 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\main.cpp
+	<iostream>
+	"DLL.h"
+
+1729357280 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\dll.h
+	<iostream>
+
+1729358571 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\dll.cpp
+	"DLL.h"
+	<iostream>
+
+1729359894 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\tp 6\tp 6\main.cpp
+	<iostream>
+	<string>
+

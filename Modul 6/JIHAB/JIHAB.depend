@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1729619426 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\jihab\dll.cpp
+	"DLL.h"
+
+1729618358 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\jihab\dll.h
+	<iostream>
+
+1729619594 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\jihab\main.cpp
+	"DLL.h"
+

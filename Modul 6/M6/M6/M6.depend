@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1729395881 source:d:\smt 3\std\modul6\m6\main.cpp
+	<iostream>
+	"DLL.h"
+
+1729392852 d:\smt 3\std\modul6\m6\dll.h
+
+1729397208 source:d:\smt 3\std\modul6\m6\dll.cpp
+	<iostream>
+	"DLL.h"
+
+1729397933 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\m6\m6\main.cpp
+	<iostream>
+	"DLL.h"
+
+1729398194 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\m6\m6\dll.h
+
+1729398203 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\m6\m6\dll.cpp
+	<iostream>
+	"DLL.h"
+

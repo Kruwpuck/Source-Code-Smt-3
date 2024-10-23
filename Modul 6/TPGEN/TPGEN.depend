@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1729447869 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\tpgen\dll.cpp
+	"DLL.h"
+
+1729447729 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\tpgen\dll.h
+	<iostream>
+
+1729447725 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 6\tpgen\main.cpp
+	"DLL.h"
+
