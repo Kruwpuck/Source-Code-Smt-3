@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1729874919 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 7\tp7\main.cpp
+	"stack.h"
+
+1729874687 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 7\tp7\stack.h
+	<iostream>
+
+1729874979 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 7\tp7\stack.cpp
+	"stack.h"
+
