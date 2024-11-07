@@ -1,0 +1,151 @@
+type TaskType <
+	IID : integer
+	Name : string
+	Cpu : real
+	Memory : real
+	Disk : real
+	Staus : string
+>
+type Infotype = TaskType
+type Address = pointer to TaskNode
+type TaskNode <
+	Info : Infotype
+	Next : Address
+	Prev : Address
+>
+type Queue <
+	Head : Address
+	Tail : Address
+>
+type Stack < Top : Address >
+type DLList <
+	First : Address
+	Last : Address
+>
+type SLList < First : Address >
+
+Procedure update_Status (I/O Q:Queue, In cpu, memory : real, newStat : string)
+Kamus
+	tempQ : Queue
+	P : Address
+Algoritma
+	createNewQueue(tempQ)
+	while not isEmpty(Q) do
+		dequeue(Q,P)
+		if P.info.Cpu > cpu and P.info.Memory > memory then
+			P.info.Status = newStat
+		endif
+		enqueue(tempQ,P)
+	endwhile
+	Q = tempQ
+endprocedure
+
+Procedure rePosition(I/O S:Stack, In cpu, memory: real)
+Kamus
+	tempS1, tempS2 : Stack
+	P : Address 
+Algoritma
+	createNewStack(tempS1)
+	createNewStack(tempS2)
+	while not isEmpty(S) do
+		pop(S,P)
+		if P.info.Cpu > cpu or P.info.Memory > memory then
+			push(tempS2, P)
+		else
+			push(tempS1, P)
+		endif
+	endwhile
+	while not isEmpty(tempS2) do
+		pop(tempS2,P)
+		push(S, P)
+	endwhile
+	while not isEmpty(tempS1) do
+		pop(tempS1,P)
+		push(S, P)
+	endwhile
+endprocedure
+
+Procedure findAndInsert(I/0 L:DLList, In newTask : Address)
+Kamus 
+	pmax,P : Address
+Algoritma
+	pmax = L.First
+	P = L.First
+	while P!=NULL do
+		if P.info.Cpu > pmax.info.Cpu then
+			pmax = P
+		endif
+		P = P->Next
+	endwhile
+	if pmax.info.Cpu < newTask.info.Cpu then
+		newTask->Next = pmax
+		newTask->Prev = pmax->Prev
+		pmax->Prev->Next = newTask
+		pmax->Prev = newTask
+	else 
+		newTask->Prev = pmax
+		newTask->Next = pmax->Next
+		pmax->Next->Prev = newTask
+		pmax->Next = newTask
+		// atau insertAfter(pmax,newTask)
+	endif
+endprocedure
+
+Procedure getInfo(I/O L:List)
+Kamus
+	Max_Cpu, Max_Memory, P : Address
+	info_cpu, info_memory : infotype
+
+	// kalau harus benar benar ditukar
+	R : List
+Algoritma
+	createNewList(R)
+	Max_Cpu = L.First
+	Max_Memory = L.First
+	P = L.First
+	while P!=NULL do
+		if P.info.Memory > Max_Memory.info.Memory then
+			Max_Memory = P
+		endif
+		if P.info.Cpu > Max_Memory.info.Cpu then
+			Max_Cpu = P
+		endif
+		P = P->Next
+	endwhile
+	
+	// kalau tidak harus benar benar ditukar
+	if Max_Cpu != Max_Memory then
+		P = L.First
+		info_cpu = Max_Cpu.info
+		info_memory = Max_Memory.info
+		while P!=NULL do
+			if P == Max_Cpu then
+				Max_Cpu = info_cpu
+			endif
+			if P == Max_Memory then
+				Max_Memory = info_memory
+			endif
+			P = P->Next
+		endwhile
+	endif
+				
+	// kalau harus benar benar ditukar
+	while L.First != NULL do
+		deleteLast(L,P)
+		if P == Max_Memory then
+			insertFirst(R, Max_Cpu)
+		else if P == Max_Cpu then
+			insertFirst(R, Max_Cpu)
+		else
+			insertFirst(R, P)
+		endif
+	endwhile
+	L = R
+endprocedure
+		
+	
+
+
+
+	
+		
