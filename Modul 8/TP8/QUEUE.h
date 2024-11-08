@@ -2,14 +2,6 @@
 #define QUEUE_H_INCLUDED
 #include <iostream>
 using namespace std;
-struct Queue{
-    ElemQ *head;
-    ElemQ *tail;
-};
-struct ElemQ{
-    Infotype info;
-    ElemQ *next;
-};
 struct Infotype{
     string nama;
     int usia;
@@ -19,6 +11,15 @@ struct Infotype{
     bool kondisi_darurat;
     int waktu_daftar;
 };
+struct ElemQ{
+    Infotype info;
+    ElemQ *next;
+};
+struct Queue{
+    ElemQ *head;
+    ElemQ *tail;
+};
+
 void createQueue_103032330054(Queue &Q);
 bool isEmpty_103032330054(Queue Q);
 ElemQ* createElemQueue_103032330054(string nama, int usia, string pekerjaan, int nomor_antrean);
@@ -33,5 +34,5 @@ void reassignQueue_103032330054(Queue &Q);
 void checkWaitingTime_103032330054(Queue &Q, int waktu_sekarang);
 void emergencyHandle_103032330054(Queue &Q, int nomor_antrean);
 void updatePriority_103032330054(Queue &Q);
-ElemQ* findAndRemove(Queue &Q, int nomor_antrean);
+ElemQ* findAndRemove_103032330054(Queue &Q, int nomor_antrean);
 #endif // QUEUE_H_INCLUDED

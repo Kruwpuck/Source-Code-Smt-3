@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1731040681 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 8\tp8\main.cpp
+	"QUEUE.h"
+
+1731040567 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 8\tp8\queue.h
+	<iostream>
+
+1731041176 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 8\tp8\queue.cpp
+	"QUEUE.h"
+

@@ -33,7 +33,7 @@ int main()
     printInfo_103032330054(Q);
 
     cout << "\nMemeriksa waktu tunggu dan mengubah prioritas jika lebih dari 2 jam:" << endl;
-    checkWaitingTime103032330054(Q, 130);
+    checkWaitingTime_103032330054(Q, 130);
     printInfo_103032330054(Q);
 
     cout << "\nMenangani kondisi darurat untuk warga dengan nomor antrean 5:" << endl;
@@ -47,8 +47,10 @@ int main()
     cout << "\nMenghapus warga dengan nomor antrean 3:" << endl;
     ElemQ* removedElem = findAndRemove_103032330054(Q, 3);
 
-    if (removedElem) {
-        cout << "Warga yang dihapus: " << info(removedElem).nama << endl;
+    if (removedElem != NULL) {
+        cout << "Warga yang dihapus: " << removedElem->info.nama << endl;
+    }else{
+        cout << "Warga dengan nomor antrean 3 tidak ditemukan"<< endl;
     }
     printInfo_103032330054(Q);
     cout << "\nUkuran antrean saat ini: " << size_103032330054(Q) << endl;
