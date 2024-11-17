@@ -56,6 +56,6 @@ void countsiswa(List_relasi L, adr_sekolah P);
 void countsekolah(List_relasi L, adr_siswa P);
 void countsiswa_Less(List_relasi Lr, List_sekolah Ld);
 void countsekolah_Less(List_relasi Lr, List_siswa Lm);
-void editsekolah(List_relasi L, adr_sekolah P, adr_siswa Q);
-void editsiswa(List_relasi L, adr_sekolah P, adr_siswa Q);
+void editsekolah(List_relasi &L, adr_sekolah P, adr_siswa Q);
+void editsiswa(List_relasi &L, adr_sekolah P, adr_siswa Q);
 #endif // HEADER_H_INCLUDED
