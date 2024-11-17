@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1731816101 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 10\tp10\flight.cpp
+	"flight.h"
+
+1731780342 d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 10\tp10\flight.h
+	<iostream>
+
+1731781338 source:d:\onedrive - telkom university\backup d\kuliah\semester 3\std\source-code-smt-3\modul 10\tp10\main.cpp
+	"flight.h"
+
