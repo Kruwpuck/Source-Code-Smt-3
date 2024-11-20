@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1732068137 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 10\latihan\main.cpp
+	"flight.h"
+
+1732066390 d:\kuliah\semester 3\std\source-code-smt-3\modul 10\latihan\flight.h
+	<iostream>
+
+1732068434 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 10\latihan\flight.cpp
+	"flight.h"
+
