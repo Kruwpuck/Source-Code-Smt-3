@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1732292996 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 11\tp11\main.cpp
+	"graph.h"
+
+1732292908 d:\kuliah\semester 3\std\source-code-smt-3\modul 11\tp11\graph.h
+	<iostream>
+
+1732292964 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 11\tp11\graph.cpp
+	"graph.h"
+
