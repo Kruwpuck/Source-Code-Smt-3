@@ -2,60 +2,65 @@
 #define HEADER_H_INCLUDED
 #include <iostream>
 using namespace std;
-struct infotype_siswa{
+struct infotype_Siswa{
     string NISN;
     string nama;
     int kelas;
 };
-struct infotype_sekolah{
+struct infotype_Sekolah{
     string kode;
     string NIDN;
     string nama;
 };
-typedef struct adr_siswa *elm_siswa;
-typedef struct adr_sekolah *elm_sekolah;
-typedef struct adr_relasi *elm_relasi;
-struct elm_siswa{
-    infotype_siswa info;
-    adr_siswa next_siswa;
-    adr_siswa prev_siswa;
+typedef struct string infotype_Relasi;
+typedef struct elm_Siswa *adr_Siswa;
+typedef struct elm_Sekolah *adr_Sekolah;
+typedef struct elm_Relasi *adr_Relasi;
+struct elm_Siswa{
+    infotype_Siswa info;
+    adr_Siswa next_Siswa;
+    adr_Siswa prev_Siswa;
 };
-struct elm_sekolah{
-    infotype_sekolah info;
-    adr_sekolah next_sekolah;
+struct elm_Sekolah{
+    infotype_Sekolah info;
+    adr_Sekolah next_Sekolah;
 };
-struct elm_relasi{
-    adr_siswa next_siswa;
-    adr_sekolah next_sekolah;
-    adr_relasi next_relasi;
+struct elm_Relasi{
+    adr_Siswa next_Siswa;
+    adr_Sekolah next_Sekolah;
+    adr_Relasi next_Relasi;
+    infotype_Relasi info;;
 };
-struct List_siswa{
-    adr_siswa first;
-    adr_siswa last;
+struct List_Siswa{
+    adr_Siswa first;
+    adr_Siswa last;
 };
-struct List_relasi{
-    adr_relasi first;
+struct List_Relasi{
+    adr_Relasi first;
 };
-struct List_sekolah{
-    adr_sekolah first;
+struct List_Sekolah{
+    adr_Sekolah first;
 };
-void insertsekolah(List_sekolah &L, adr_sekolah P);
-void insertsiswa(List_siswa &L, adr_siswa P);
-void insertRelasi(List_relasi &L, adr_relasi P);
-void deletesekolah(List_sekolah &L, adr_sekolah &P);
-void deletesiswa(List_siswa &L, adr_siswa &P);
-void deleteRelasi(List_relasi &L, adr_relasi P);
-void checkRelasi(List_relasi L, adr_siswa P, adr_sekolah Q);
-void showsekolah(List_sekolah L);
-void showsiswa(List_siswa L);
-void showsiswa_darisekolah(List_relasi L, adr_sekolah P);
-void showsekolah_darisiswa(List_relasi L, adr_siswa P);
-void showAll_relasisekolah(List_sekolah Ld, List_relasi Lr);
-void showAll_relasisiswa(List_sekolah Lm, List_relasi Lr);
-void countsiswa(List_relasi L, adr_sekolah P);
-void countsekolah(List_relasi L, adr_siswa P);
-void countsiswa_Less(List_relasi Lr, List_sekolah Ld);
-void countsekolah_Less(List_relasi Lr, List_siswa Lm);
-void editsekolah(List_relasi &L, adr_sekolah P, adr_siswa Q);
-void editsiswa(List_relasi &L, adr_sekolah P, adr_siswa Q);
+void insertSekolah(List_Sekolah &L, adr_Sekolah P);
+void insertSiswa(List_Siswa &L, adr_Siswa P);
+void insertRelasi(List_Relasi &L, adr_Relasi P);
+void deleteSekolah(List_Sekolah &L, adr_Sekolah &P);
+void deleteSiswa(List_Siswa &L, adr_Siswa &P);
+void deleteRelasi(List_Relasi &L, adr_Relasi P);
+void findSekolah(List_Sekolah L, adr_Sekolah &P);
+
+void checkRelasi(List_Relasi L, adr_Siswa P, adr_Sekolah Q);
+void showSekolah(List_Sekolah L);
+void showSiswa(List_Siswa L);
+void showSiswa_dariSekolah(List_Relasi L, adr_Sekolah P);
+void showSekolah_dariSiswa(List_Relasi L, adr_Siswa P);
+void showAll_RelasiSekolah(List_Sekolah Ld, List_Relasi Lr);
+void showAll_RelasiSiswa(List_Sekolah Lm, List_Relasi Lr);
+void countSiswa(List_Relasi L, adr_Sekolah P);
+void countSekolah(List_Relasi L, adr_Siswa P);
+void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld);
+void countSekolah_Less(List_Relasi Lr, List_Siswa Lm);
+void editSekolah(List_Relasi &L, adr_Sekolah P, adr_Siswa Q);
+void editSiswa(List_Relasi &L, adr_Sekolah P, adr_Siswa Q);
+int menu();
 #endif // HEADER_H_INCLUDED
