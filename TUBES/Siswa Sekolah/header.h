@@ -12,7 +12,7 @@ struct infotype_Sekolah{
     string NPSN;
     string nama;
 };
-typedef struct string infotype_Relasi;
+typedef string infotype_Relasi;
 typedef struct elm_Siswa *adr_Siswa;
 typedef struct elm_Sekolah *adr_Sekolah;
 typedef struct elm_Relasi *adr_Relasi;
@@ -57,12 +57,12 @@ void showSiswa(List_Siswa L);
 void showSiswa_dariSekolah(List_Relasi L, adr_Sekolah P);
 void showSekolah_dariSiswa(List_Relasi L, adr_Siswa P);
 void showAll_RelasiSekolah(List_Sekolah Ld, List_Relasi Lr);
-void showAll_RelasiSiswa(List_Sekolah Lm, List_Relasi Lr);
+void showAll_RelasiSiswa(List_Siswa Lm, List_Relasi Lr);
 void countSiswa(List_Relasi L, adr_Sekolah P);
 void countSekolah(List_Relasi L, adr_Siswa P);
 void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld);
 void countSekolah_Less(List_Relasi Lr, List_Siswa Lm);
 void editSekolah(List_Relasi &L, adr_Sekolah P, adr_Siswa Q, adr_Siswa R);
 void editSiswa(List_Relasi &L, adr_Siswa P, adr_Sekolah Q, adr_Sekolah R);
-int menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc);
+void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc);
 #endif // HEADER_H_INCLUDED
