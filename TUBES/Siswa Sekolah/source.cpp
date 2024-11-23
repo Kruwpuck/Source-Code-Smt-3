@@ -18,8 +18,9 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
     if (pilihan == 4){
         return ;
     }
-    if ( pilihan < 1 || pilihan > 4){
+    if (pilihan < 1 || pilihan > 4){
         cout << "Pilihan tidak valid" << endl;
+        cin >> pilihan;
     }
     if (pilihan == 1){
         cout << endl << "===============MENU SEKOLAH================" << endl;
