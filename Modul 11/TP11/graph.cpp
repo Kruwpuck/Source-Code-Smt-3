@@ -20,8 +20,23 @@ void addVertex_103032330054(graph &G, char newVertexID){
 void buildGraph_103032330054(graph &G){
     char input;
     cin >> input;
+    adrVertex P;
+    bool found = false;
     while (input >= 'A' && input <= 'Z'){
-        addVertex_103032330054(G, input);
-        cin >> input;
+        P = G.firstVertex;
+        while (P != NULL && !found ){
+            if (P->idVertex == input){
+                found = true;
+            }else{
+                P = P->nextVertex;
+            }
+        }
+        if (!found){
+            addVertex_103032330054(G, input);
+            cin >> input;
+        }else{
+            cout << "Vertex sudah ada" << endl;
+            cin >> input;
+        }
     }
 }
