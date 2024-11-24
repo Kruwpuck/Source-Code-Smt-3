@@ -44,6 +44,7 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cin >> dataP.NPSN;
             P = new elm_Sekolah;
             P->info = dataP;
+            P->next_Sekolah = NULL;
             insertSekolah(Lp, P);
             cout << "Data Sekolah berhasil ditambahkan" << endl;
         }else if(pilihan == 2){
@@ -89,6 +90,8 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cin >> dataC.NISN;
             C = new elm_Siswa;
             C->info = dataC;
+            C->next_Siswa = NULL;
+            C->prev_Siswa = NULL;
             insertSiswa(Lc, C);
             cout << "Data Siswa berhasil ditambahkan" << endl;
         }else if(pilihan == 2){
@@ -189,9 +192,9 @@ void insertSiswa(List_Siswa &L, adr_Siswa P){
         L.first = P;
         L.last = P;
     }else{
-        L.first->next_Siswa = P;
-        P->prev_Siswa = L.first;
-        L.first = P;
+        L.last->next_Siswa = P;
+        P->prev_Siswa = L.last;
+        L.last = P;
     }
 }
 void insertRelasi(List_Relasi &L, adr_Relasi P){
