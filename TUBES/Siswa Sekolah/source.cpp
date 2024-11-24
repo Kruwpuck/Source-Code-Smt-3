@@ -131,6 +131,9 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cout << "Masukkan Info Relasi: ";
             cin >> dataR;
             R = new elm_Relasi;
+            R->info = dataR;
+            R->next_Sekolah = P;
+            R->next_Siswa = C;
             insertRelasi(Lr, R);
             cout << "Relasi berhasil ditambahkan" << endl;
         }else if (pilihan == 2){
@@ -446,7 +449,7 @@ void countSekolah(List_Relasi L, adr_Siswa P){
 }
 void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld){
     if(Lr.first == NULL){
-        cout << "Data Relasi kosong" << endl;
+        showSekolah(Ld);
     }else{
         adr_Sekolah P = Ld.first;
         bool found;
@@ -471,7 +474,7 @@ void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld){
 }
 void countSekolah_Less(List_Relasi Lr, List_Siswa Lm){
     if(Lr.first == NULL){
-        cout << "Data Relasi kosong" << endl;
+        showSiswa(Lm);
     }else{
         adr_Siswa P = Lm.first;
         bool found;
