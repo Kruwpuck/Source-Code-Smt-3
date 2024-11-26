@@ -3,13 +3,13 @@
 #include <iostream>
 using namespace std;
 struct infotype_Siswa{
-    string NISN;
+    int NISN;
     string nama;
-    int kelas;
+    string kelas;
 };
 struct infotype_Sekolah{
     string alamat;
-    string NPSN;
+    int NPSN;
     string nama;
 };
 typedef string infotype_Relasi;
@@ -47,8 +47,14 @@ void insertSekolah(List_Sekolah &L, adr_Sekolah P);
 void insertSiswa(List_Siswa &L, adr_Siswa P);
 void insertRelasi(List_Relasi &L, adr_Relasi P);
 void deleteSekolah(List_Sekolah &L, adr_Sekolah &P);
+void deleteFirstSekolah(List_Sekolah &L, adr_Sekolah &P);
+void deleteLastSekolah(List_Sekolah &L, adr_Sekolah &P);
+void deleteAfterSekolah(List_Sekolah &L, adr_Sekolah &P);
 void deleteSiswa(List_Siswa &L, adr_Siswa &P);
-void deleteRelasi(List_Relasi &L, adr_Sekolah &S, adr_Siswa &R ,adr_Relasi &P);
+void deleteFirstSiswa(List_Siswa &L, adr_Siswa &P);
+void deleteLastSiswa(List_Siswa &L, adr_Siswa &P);
+void deleteAfterSiswa(List_Siswa &L, adr_Siswa &P);
+void deleteRelasi(List_Relasi &L,adr_Relasi &P);
 void findSekolah(List_Sekolah L, adr_Sekolah &P);
 void findSiswa(List_Siswa L, adr_Siswa &P);
 void checkRelasi(List_Relasi L, adr_Siswa P, adr_Sekolah Q, adr_Relasi &R);
@@ -65,4 +71,8 @@ void countSekolah_Less(List_Relasi Lr, List_Siswa Lm);
 void editSekolah(List_Relasi &L, adr_Sekolah P, adr_Siswa Q, adr_Siswa R);
 void editSiswa(List_Relasi &L, adr_Siswa P, adr_Sekolah Q, adr_Sekolah R);
 void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc);
+void deleteRelasiSiswa(List_Relasi &L, adr_Siswa &P);
+void deleteRelasiSekolah(List_Relasi &L, adr_Sekolah &P);
+bool checkNISN(List_Siswa L, int NISN);
+bool checkNPSN(List_Sekolah L, int NPSN);
 #endif // HEADER_H_INCLUDED

@@ -2,60 +2,61 @@
 #define HEADER_H_INCLUDED
 #include <iostream>
 using namespace std;
-struct infotype_murid{
+struct infotype_Murid{
     string NISN;
     string nama;
-    int kelas;
+    string kelas;
 };
-struct infotype_guru{
-    string kode;
-    string NIDN;
+struct infotype_Guru{
+    string Jabatan;
+    string NUPTK;
     string nama;
 };
-typedef struct adr_murid *elm_murid;
-typedef struct adr_guru *elm_guru;
-typedef struct adr_relasi *elm_relasi;
-struct elm_murid{
-    infotype_murid info;
-    adr_murid next_murid;
+typedef struct adr_Murid *elm_Murid;
+typedef struct adr_Guru *elm_Guru;
+typedef struct adr_Relasi *elm_Relasi;
+struct elm_Murid{
+    infotype_Murid info;
+    adr_Murid next_Murid;
 };
-struct elm_guru{
-    infotype_guru info;
-    adr_guru next_guru;
-    adr_guru prev_guru;
+struct elm_Guru{
+    infotype_Guru info;
+    adr_Guru next_Guru;
+    adr_Guru prev_Guru;
 };
-struct elm_relasi{
-    adr_murid next_murid;
-    adr_guru next_guru;
-    adr_relasi next_relasi;
+struct elm_Relasi{
+    adr_Murid next_Murid;
+    adr_Guru next_Guru;
+    adr_Relasi next_Relasi;
+    string info;
 };
-struct List_murid{
-    adr_murid first;
-    adr_murid last;
+struct List_Murid{
+    adr_Murid first;
+    adr_Murid last;
 };
-struct List_relasi{
-    adr_relasi first;
+struct List_Relasi{
+    adr_Relasi first;
 };
-struct List_guru{
-    adr_guru first;
+struct List_Guru{
+    adr_Guru first;
 };
-void insertguru(List_guru &L, adr_guru P);
-void insertmurid(List_murid &L, adr_murid P);
-void insertRelasi(List_relasi &L, adr_relasi P);
-void deleteguru(List_guru &L, adr_guru &P);
-void deletemurid(List_murid &L, adr_murid &P);
-void deleteRelasi(List_relasi &L, adr_relasi P);
-void checkRelasi(List_relasi L, adr_murid P, adr_guru Q);
-void showguru(List_guru L);
-void showmurid(List_murid L);
-void showmurid_dariguru(List_relasi L, adr_guru P);
-void showguru_darimurid(List_relasi L, adr_murid P);
-void showAll_relasiguru(List_guru Ld, List_relasi Lr);
-void showAll_relasimurid(List_guru Lm, List_relasi Lr);
-void countmurid(List_relasi L, adr_guru P);
-void countguru(List_relasi L, adr_murid P);
-void countmurid_Less(List_relasi Lr, List_guru Ld);
-void countguru_Less(List_relasi Lr, List_murid Lm);
-void editguru(List_relasi L, adr_guru P, adr_murid Q);
-void editmurid(List_relasi L, adr_guru P, adr_murid Q);
+void insertGuru(List_Guru &L, adr_Guru P);
+void insertMurid(List_Murid &L, adr_Murid P);
+void insertRelasi(List_Relasi &L, adr_Relasi P);
+void deleteGuru(List_Guru &L, adr_Guru &P);
+void deleteMurid(List_Murid &L, adr_Murid &P);
+void deleteRelasi(List_Relasi &L, adr_Relasi P);
+void checkRelasi(List_Relasi L, adr_Murid P, adr_Guru Q, adr_Relasi &R);
+void showGuru(List_Guru L);
+void showMurid(List_Murid L);
+void showMurid_dariGuru(List_Relasi L, adr_Guru P);
+void showGuru_dariMurid(List_Relasi L, adr_Murid P);
+void showAll_RelasiGuru(List_Guru Lg, List_Relasi Lr);
+void showAll_RelasiMurid(List_Guru Lm, List_Relasi Lr);
+void countMurid(List_Relasi L, adr_Guru P);
+void countGuru(List_Relasi L, adr_Murid P);
+void countMurid_Less(List_Relasi Lr, List_Guru Lg);
+void countGuru_Less(List_Relasi Lr, List_Murid Lm);
+void editGuru(List_Relasi L, adr_Guru P, adr_Murid Q);
+void editMurid(List_Relasi L, adr_Guru P, adr_Murid Q);
 #endif // HEADER_H_INCLUDED

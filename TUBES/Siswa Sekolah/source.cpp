@@ -42,15 +42,23 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cin >> dataP.alamat;
             cout << "Masukkan NPSN Sekolah: ";
             cin >> dataP.NPSN;
+            while (!checkNPSN(Lp, dataP.NPSN)){
+                cout << "NPSN sudah ada" << endl;
+                cin >> dataP.NPSN;
+            }
             P = new elm_Sekolah;
             P->info = dataP;
             P->next_Sekolah = NULL;
             insertSekolah(Lp, P);
             cout << "Data Sekolah berhasil ditambahkan" << endl;
         }else if(pilihan == 2){
+            P = NULL;
             deleteSekolah(Lp, P);
-            delete P;
-            cout << "Elemen Pertama List Sekolah berhasil dihapus" << endl;
+            if (P != NULL){
+                deleteRelasiSekolah(Lr, P);
+                cout << "Elemen List Sekolah "<< P->info.nama << " telah berhasil dihapus" << endl;
+                delete P;
+            }
         }else if(pilihan == 3){
             findSekolah(Lp, P);
         }else if(pilihan == 4){
@@ -59,9 +67,17 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             countSekolah_Less(Lr, Lc);
         }else if(pilihan == 6){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             countSiswa(Lr, P);
         }else if(pilihan == 7){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             showSiswa_dariSekolah(Lr, P);
         }else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
@@ -88,6 +104,10 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cin >> dataC.kelas;
             cout << "Masukkan NISN Siswa: ";
             cin >> dataC.NISN;
+            while (!checkNISN(Lc, dataC.NISN)){
+                cout << "NISN sudah ada" << endl;
+                cin >> dataC.NISN;
+            }
             C = new elm_Siswa;
             C->info = dataC;
             C->next_Siswa = NULL;
@@ -96,8 +116,11 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             cout << "Data Siswa berhasil ditambahkan" << endl;
         }else if(pilihan == 2){
             deleteSiswa(Lc, C);
-            delete C;
-            cout << "Elemen Pertama List Siswa berhasil dihapus" << endl;
+            if (C != NULL){
+                deleteRelasiSiswa(Lr, C);
+                cout << "Siswa dengan nama: " << C->info.nama  << "telah berhasil dihapus" << endl;
+                delete C;
+            }
         }else if(pilihan == 3){
             findSiswa(Lc, C);
         }else if(pilihan == 4){
@@ -106,6 +129,10 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             countSekolah_Less(Lr, Lc);
         }else if(pilihan == 6){
             findSiswa(Lc, C);
+            while (C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
             countSekolah(Lr, C);
         }else if(pilihan == 7){
             findSiswa(Lc, C);
@@ -130,24 +157,54 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
         cout << endl;
         if (pilihan == 1){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             findSiswa(Lc, C);
+            while ( C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
             cout << "Masukkan Info Relasi: ";
             cin >> dataR;
             R = new elm_Relasi;
             R->info = dataR;
             R->next_Sekolah = P;
             R->next_Siswa = C;
+            R->next_Relasi = NULL;
+            R->prev_Relasi = NULL;
             insertRelasi(Lr, R);
             cout << "Relasi berhasil ditambahkan" << endl;
         }else if (pilihan == 2){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             findSiswa(Lc, C);
-            deleteRelasi(Lr, P, C, R);
+            while ( C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
+            checkRelasi(Lr, C, P, R);
+            if (R == NULL){
+                cout << "Relasi tidak ditemukan" << endl;
+            }else{}
+            deleteRelasi(Lr, R);
             delete R;
             cout << "Relasi berhasil dihapus" << endl;
         }else if (pilihan == 3){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             findSiswa(Lc, C);
+            while ( C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
             checkRelasi(Lr, C, P, R);
         }else if (pilihan == 4){
             showAll_RelasiSekolah(Lp, Lr);
@@ -155,7 +212,15 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             showAll_RelasiSiswa(Lc, Lr);
         }else if (pilihan == 6){
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             findSiswa(Lc, C);
+            while ( C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
             checkRelasi(Lr, C, P, R);
             if (R != NULL){
                 findSiswa(Lc, D);
@@ -164,7 +229,15 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             }
         }else if (pilihan == 7){
             findSiswa(Lc, C);
+            while ( C == NULL){
+                cout << "Data Siswa tidak ditemukan" << endl;
+                findSiswa(Lc, C);
+            }
             findSekolah(Lp, P);
+            while (P == NULL){
+                cout << "Data Sekolah tidak ditemukan" << endl;
+                findSekolah(Lp, P);
+            }
             checkRelasi(Lr, C, P, R);
             if (R != NULL){
                 findSekolah(Lp, Q);
@@ -209,35 +282,44 @@ void insertRelasi(List_Relasi &L, adr_Relasi P){
 }
 void deleteSekolah(List_Sekolah &L, adr_Sekolah &P){
     if(L.first == NULL){
-        cout << "Data Sekolah kosong" << endl;
-    }else if(L.first == P){
-        P = L.first;
-        L.first = NULL;
+        cout << "Data Siswa kosong" << endl;
+        return;
+    }
+    findSekolah(L, P);
+    while (P == NULL){
+        cout << "Data Sekolah tidak ditemukan" << endl;
+        findSekolah(L, P);
+    }
+    if(P == L.first){
+        deleteFirstSekolah(L, P);
+    }else if (P->next_Sekolah == NULL){
+        deleteLastSekolah(L, P);
     }else{
-        P = L.first;
-        L.first = P->next_Sekolah;
-        P->next_Sekolah = NULL;
+        deleteAfterSekolah(L, P);
     }
 }
 void deleteSiswa(List_Siswa &L, adr_Siswa &P){
     if(L.first == NULL){
         cout << "Data Siswa kosong" << endl;
-    }else if(L.first == L.last){
-        P = L.first;
-        L.first = NULL;
-        L.last = NULL;
+        return;
+    }
+    findSiswa(L, P);
+    if (P == NULL){
+        cout << "Data Siswa tidak ditemukan" << endl;
+        return;
+    }
+    if (P == L.first){
+        deleteFirstSiswa(L, P);
+    }else if (P == L.last){
+        deleteLastSiswa(L, P);
     }else{
-        P = L.last;
-        L.last = P->prev_Siswa;
-        P->prev_Siswa = NULL;
-        L.last->next_Siswa = NULL;
+        deleteAfterSiswa(L, P);
     }
 }
-void deleteRelasi(List_Relasi &L, adr_Sekolah &S, adr_Siswa &R ,adr_Relasi &P){
+void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
-        checkRelasi(L, R, S, P);
         if(P == L.first){
             L.first = P->next_Relasi;
             P->next_Relasi = NULL;
@@ -258,7 +340,7 @@ void findSekolah(List_Sekolah L, adr_Sekolah &P){
         cout << "Data Sekolah kosong" << endl;
         return;
     }else{
-        string NPSN;
+        int NPSN;
         cout << "Masukkan NPSN Sekolah: ";
         cin >> NPSN;
         P = L.first;
@@ -282,7 +364,7 @@ void findSiswa(List_Siswa L, adr_Siswa &P){
         cout << "Data Siswa kosong" << endl;
         return;
     }else{
-        string NISN;
+        int NISN;
         cout << "Masukkan NISN Siswa: ";
         cin >> NISN;
         P = L.first;
@@ -460,12 +542,11 @@ void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld){
         while (P != NULL){
             adr_Relasi R = Lr.first;
             found = false;
-            while(R != NULL && !found){
+            while(R != NULL){
                 if (R->next_Sekolah == P){
                     found = true;
-                }else{
-                    R = R->next_Relasi;
                 }
+                R = R->next_Relasi;
             }
             if (!found){
                 hitung++;
@@ -482,15 +563,15 @@ void countSekolah_Less(List_Relasi Lr, List_Siswa Lm){
         adr_Siswa P = Lm.first;
         bool found;
         int hitung = 0;
+        adr_Relasi R;
         while (P != NULL){
-            adr_Relasi R = Lr.first;
+            R = Lr.first;
             found = false;
-            while(R != NULL && !found){
+            while(R != NULL){
                 if (R->next_Siswa == P){
                     found = true;
-                }else{
-                    R = R->next_Relasi;
                 }
+                R = R->next_Relasi;
             }
             if (!found){
                 hitung++;
@@ -511,4 +592,122 @@ void editSiswa(List_Relasi &L, adr_Siswa P, adr_Sekolah Q, adr_Sekolah R){
     adr_Relasi T = NULL;
     checkRelasi(L, P, Q, T);
     T->next_Sekolah = R;
+}
+void deleteRelasiSiswa(List_Relasi &L, adr_Siswa &P){
+    adr_Relasi R = L.first;
+    while (R != NULL){
+        if (R->next_Siswa == P){
+            deleteRelasi(L,R);
+            R = L.first;
+        }
+        R = R->next_Relasi;
+    }
+}
+void deleteRelasiSekolah(List_Relasi &L, adr_Sekolah &P){
+    adr_Relasi R = L.first;
+    while (R != NULL){
+        if (R->next_Sekolah == P){
+            deleteRelasi(L, R);
+            R = L.first;
+        }else{
+            R = R->next_Relasi;
+        }
+    }
+}
+void deleteFirstSiswa(List_Siswa &L, adr_Siswa &P){
+    if(L.first == NULL){
+        cout << "Data Siswa kosong" << endl;
+        return;
+    }
+    if(L.first == L.last){
+        L.first = NULL;
+        L.last = NULL;
+    }else{
+        L.first = P->next_Siswa;
+        P->next_Siswa = NULL;
+        L.first->prev_Siswa = NULL;
+    }
+}
+void deleteLastSiswa(List_Siswa &L, adr_Siswa &P){
+    if(L.first == NULL){
+        cout << "Data Siswa kosong" << endl;
+        return;
+    }
+    if(L.first == L.last){
+        L.first = NULL;
+        L.last = NULL;
+    }else{
+        L.last = P->prev_Siswa;
+        P->prev_Siswa = NULL;
+        L.last->next_Siswa = NULL;
+    }
+}
+void deleteAfterSiswa(List_Siswa &L, adr_Siswa &P){
+    if(L.first == NULL){
+        cout << "Data Siswa kosong" << endl;
+        return;
+    }
+    P->next_Siswa->prev_Siswa = P->prev_Siswa;
+    P->prev_Siswa->next_Siswa = P->next_Siswa;
+    P->next_Siswa = NULL;
+    P->prev_Siswa = NULL;
+}
+void deleteFirstSekolah(List_Sekolah &L, adr_Sekolah &P){
+    if(L.first == NULL){
+        cout << "Data Sekolah kosong" << endl;
+        return;
+    }
+    if(L.first->next_Sekolah == NULL){
+        L.first = NULL;
+    }else{
+        L.first = P->next_Sekolah;
+        P->next_Sekolah = NULL;
+    }
+}
+void deleteLastSekolah(List_Sekolah &L, adr_Sekolah &P){
+    if(L.first == NULL){
+        cout << "Data Sekolah kosong" << endl;
+        return;
+    }
+    if(L.first->next_Sekolah == NULL){
+        L.first = NULL;
+    }else{
+        adr_Sekolah Q = L.first;
+        while (Q->next_Sekolah != P){
+            Q = Q->next_Sekolah;
+        }
+        Q->next_Sekolah = NULL;
+    }
+}
+void deleteAfterSekolah(List_Sekolah &L, adr_Sekolah &P){
+    if(L.first == NULL){
+        cout << "Data Sekolah kosong" << endl;
+        return;
+    }
+    adr_Sekolah Q = L.first;
+    while (Q->next_Sekolah != P){
+        Q = Q->next_Sekolah;
+    }
+    Q->next_Sekolah = P->next_Sekolah;
+    P->next_Sekolah = NULL;
+}
+bool checkNISN(List_Siswa L, int NISN){
+    adr_Siswa P = L.first;
+    while (P != NULL){
+        if (P->info.NISN == NISN){
+            return false;
+        }
+        P = P->next_Siswa;
+    }
+    return true;
+}
+bool checkNPSN(List_Sekolah L, int NPSN){
+    adr_Sekolah P = L.first;
+    while (P != NULL){
+        if (P->info.NPSN == NPSN){
+            return false;
+        }
+        P = P->next_Sekolah;
+    }
+    return true;
 }

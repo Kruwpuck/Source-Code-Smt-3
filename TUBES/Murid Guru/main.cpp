@@ -1,9 +1,8 @@
-#include <iostream>
-
-using namespace std;
-
+#include "header.h"
 int main()
 {
-    cout << "Hello world!" << endl;
+    List_Guru Lg;
+    List_Murid Lm;
+    List_Relasi Lr;
     return 0;
 }
