@@ -118,7 +118,7 @@ void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc){
             deleteSiswa(Lc, C);
             if (C != NULL){
                 deleteRelasiSiswa(Lr, C);
-                cout << "Siswa dengan nama: " << C->info.nama  << "telah berhasil dihapus" << endl;
+                cout << "Siswa dengan nama: " << C->info.nama  << " telah berhasil dihapus" << endl;
                 delete C;
             }
         }else if(pilihan == 3){
@@ -470,11 +470,11 @@ void showSekolah_dariSiswa(List_Relasi L, adr_Siswa P){
         cout << "===============================" << endl;
     }
 }
-void showAll_RelasiSekolah(List_Sekolah Ld, List_Relasi Lr){
-    if(Ld.first == NULL){
+void showAll_RelasiSekolah(List_Sekolah Lp, List_Relasi Lr){
+    if(Lp.first == NULL){
         cout << "Data Sekolah kosong" << endl;
     }else{
-        adr_Sekolah P = Ld.first;
+        adr_Sekolah P = Lp.first;
         cout << endl << "===============================" << endl;
         while(P != NULL){
             cout << "Nama Sekolah: " << P->info.nama << endl;
@@ -486,11 +486,11 @@ void showAll_RelasiSekolah(List_Sekolah Ld, List_Relasi Lr){
         }
     }
 }
-void showAll_RelasiSiswa(List_Siswa Lm, List_Relasi Lr){
-    if(Lm.first == NULL){
+void showAll_RelasiSiswa(List_Siswa Lc, List_Relasi Lr){
+    if(Lc.first == NULL){
         cout << "Data Siswa kosong" << endl;
     }else{
-        adr_Siswa P = Lm.first;
+        adr_Siswa P = Lc.first;
         cout << endl << "===============================" << endl;
         while(P != NULL){
             cout << "Nama Siswa: " << P->info.nama << endl;
@@ -532,11 +532,11 @@ void countSekolah(List_Relasi L, adr_Siswa P){
         cout << "Jumlah Sekolah dari Siswa " << P->info.nama << ": " << hitung << endl;
     }
 }
-void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld){
+void countSiswa_Less(List_Relasi Lr, List_Sekolah Lp){
     if(Lr.first == NULL){
-        showSekolah(Ld);
+        showSekolah(Lp);
     }else{
-        adr_Sekolah P = Ld.first;
+        adr_Sekolah P = Lp.first;
         bool found;
         int hitung = 0;
         while (P != NULL){
@@ -556,11 +556,11 @@ void countSiswa_Less(List_Relasi Lr, List_Sekolah Ld){
         cout << "Jumlah Sekolah yang tidak memiliki Siswa: " << hitung << endl;
     }
 }
-void countSekolah_Less(List_Relasi Lr, List_Siswa Lm){
+void countSekolah_Less(List_Relasi Lr, List_Siswa Lc){
     if(Lr.first == NULL){
-        showSiswa(Lm);
+        showSiswa(Lc);
     }else{
-        adr_Siswa P = Lm.first;
+        adr_Siswa P = Lc.first;
         bool found;
         int hitung = 0;
         adr_Relasi R;

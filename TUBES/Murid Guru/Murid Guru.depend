@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1732650672 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\murid guru\main.cpp
+	"header.h"
+
+1732680126 d:\kuliah\semester 3\std\source-code-smt-3\tubes\murid guru\header.h
+	<iostream>
+

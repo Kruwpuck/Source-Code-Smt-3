@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1732766782 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 11\latihan\graph.cpp
+	"graph.h"
+
+1732767098 d:\kuliah\semester 3\std\source-code-smt-3\modul 11\latihan\graph.h
+	<iostream>
+
+1732767057 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 11\latihan\main.cpp
+	"graph.h"
+
