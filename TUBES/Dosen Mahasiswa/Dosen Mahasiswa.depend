@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1732892896 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\dosen mahasiswa\main.cpp
+	"header.h"
+
+1732892981 d:\kuliah\semester 3\std\source-code-smt-3\tubes\dosen mahasiswa\header.h
+	<iostream>
+

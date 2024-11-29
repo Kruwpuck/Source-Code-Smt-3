@@ -4,10 +4,15 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
     adr_Guru P,Q;
     adr_Murid C,D;
     infotype_Relasi dataR;
-    infotype_Guru dataP;
-    infotype_Murid dataC;
+    infotype_Guru data_Guru;
+    infotype_Murid data_Murid;
     int pilihan;
-    cout << endl << "===============MENU UTAMA================" << endl;
+    cout << endl << "========= PENDATAAN MURID & GURU ==========" << endl;
+    cout << endl << "||                                       ||" << endl;
+    cout << endl << "||   Chantika Syafana Z || 103032300058  ||" << endl;
+    cout << endl << "||      Wirdatul Ahya   || 103032300071  ||" << endl;
+    cout << endl << "||                                       ||" << endl;
+    cout << endl << "=============== MENU UTAMA ================" << endl;
     cout << "1. Data Guru" << endl;
     cout << "2. Data Murid" << endl;
     cout << "3. Data Relasi" << endl;
@@ -15,15 +20,21 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
     cout << "Masukkan pilihan: ";
     cin >> pilihan;
     cout << endl;
+    if (pilihan < 1 || pilihan > 4){
+        cout << "Pilihan tidak valid" << endl;
+        cout << endl << "=============== MENU UTAMA ================" << endl;
+        cout << "1. Data Guru" << endl;
+        cout << "2. Data Murid" << endl;
+        cout << "3. Data Relasi" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Masukkan pilihan: ";
+        cin >> pilihan;
+    }
     if (pilihan == 4){
         return ;
     }
-    if (pilihan < 1 || pilihan > 4){
-        cout << "Pilihan tidak valid" << endl;
-        cin >> pilihan;
-    }
     if (pilihan == 1){
-        cout << endl << "===============MENU Guru================" << endl;
+        cout << endl << "=============== MENU Guru ================" << endl;
         cout << "1. Tambah Guru" << endl;
         cout << "2. Hapus Guru" << endl;
         cout << "3. Cari Guru" << endl;
@@ -37,17 +48,17 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
         cout << endl;
         if (pilihan == 1){
             cout << "Masukkan Nama Guru: ";
-            cin >> dataP.nama;
+            cin >> data_Guru.nama;
             cout << "Masukkan Jabatan Guru: ";
-            cin >> dataP.jabatan;
+            cin >> data_Guru.jabatan;
             cout << "Masukkan NUPTK Guru: ";
-            cin >> dataP.NUPTK;
-            while (!checkNUPTK(Lg, dataP.NUPTK)){
+            cin >> data_Guru.NUPTK;
+            while (!checkNUPTK(Lg, data_Guru.NUPTK)){
                 cout << "NUPTK sudah ada" << endl;
-                cin >> dataP.NUPTK;
+                cin >> data_Guru.NUPTK;
             }
             P = new elm_Guru;
-            P->info = dataP;
+            P->info = data_Guru;
             P->next_Guru = NULL;
             P->prev_Guru = NULL;
             insertGuru(Lg, P);
@@ -86,7 +97,7 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
             cout << "Pilihan tidak valid" << endl;
         }
     }else if(pilihan == 2){
-        cout << endl << "===============MENU Murid================" << endl;
+        cout << endl << "=============== MENU Murid ================" << endl;
         cout << "1. Tambah Murid" << endl;
         cout << "2. Hapus Murid" << endl;
         cout << "3. Cari Murid" << endl;
@@ -100,17 +111,17 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
         cout << endl;
         if (pilihan == 1){
             cout << "Masukkan Nama Murid: ";
-            cin >> dataC.nama;
+            cin >> data_Murid.nama;
             cout << "Masukkan Kelas Murid: ";
-            cin >> dataC.kelas;
+            cin >> data_Murid.kelas;
             cout << "Masukkan NISN Murid: ";
-            cin >> dataC.NISN;
-            while (!checkNISN(Lm, dataC.NISN)){
+            cin >> data_Murid.NISN;
+            while (!checkNISN(Lm, data_Murid.NISN)){
                 cout << "NISN sudah ada" << endl;
-                cin >> dataC.NISN;
+                cin >> data_Murid.NISN;
             }
             C = new elm_Murid;
-            C->info = dataC;
+            C->info = data_Murid;
             C->next_Murid = NULL;
             insertMurid(Lm, C);
             cout << "Data Murid berhasil ditambahkan" << endl;
@@ -173,7 +184,6 @@ void menu(List_Relasi &Lr, List_Guru &Lg, List_Murid &Lm){
             R->next_Guru = P;
             R->next_Murid = C;
             R->next_Relasi = NULL;
-            R->prev_Relasi = NULL;
             insertRelasi(Lr, R);
             cout << "Relasi berhasil ditambahkan" << endl;
         }else if (pilihan == 2){
@@ -277,7 +287,6 @@ void insertRelasi(List_Relasi &L, adr_Relasi P){
         L.last = P;
     }else{
         P->next_Relasi = L.first;
-        L.first->prev_Relasi = P;
         L.first = P;
     }
 }
@@ -321,18 +330,21 @@ void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
+        adr_Relasi Q = L.first;
         if(P == L.first){
             L.first = P->next_Relasi;
             P->next_Relasi = NULL;
-        }else if(P == L.last){
-            L.last = P->prev_Relasi;
-            P->prev_Relasi = NULL;
-            L.last->next_Relasi = NULL;
+        }else if(P->next_Relasi == NULL){
+            while (Q->next_Relasi != P){
+                Q = Q->next_Relasi;
+            }
+            Q->next_Relasi = NULL;
         }else{
-            P->prev_Relasi->next_Relasi = P->next_Relasi;
-            P->next_Relasi->prev_Relasi = P->prev_Relasi;
+            while (Q->next_Relasi != P){
+                Q = Q->next_Relasi;
+            }
+            Q->next_Relasi = P->next_Relasi;
             P->next_Relasi = NULL;
-            P->prev_Relasi = NULL;
         }
     }
 }
@@ -348,11 +360,11 @@ void findGuru(List_Guru L, adr_Guru &P){
         while(P != NULL){
             if(P->info.NUPTK == NUPTK){
                 cout << "Data Guru ditemukan" << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "=========================================" << endl;
                 cout << "Nama Guru: " << P->info.nama << endl;
                 cout << "Jabatan Guru: " << P->info.jabatan << endl;
                 cout << "NUPTK Guru: " << P->info.NUPTK << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "=========================================" << endl;
                 return;
             }else{
                 P = P->next_Guru;
@@ -372,11 +384,11 @@ void findMurid(List_Murid L, adr_Murid &P){
         while(P != NULL){
             if(P->info.NISN == NISN){
                 cout << "Data Murid ditemukan" << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "=========================================" << endl;
                 cout << "Nama Murid: " << P->info.nama << endl;
                 cout << "Kelas Murid: " << P->info.kelas << endl;
                 cout << "NISN Murid: " << P->info.NISN << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "=========================================" << endl;
                 return;
             }else{
                 P = P->next_Murid;
@@ -388,25 +400,25 @@ void checkRelasi(List_Relasi L, adr_Murid P, adr_Guru Q, adr_Relasi &R){
     R = L.first;
     while(R != NULL){
         if(R->next_Murid == P && R->next_Guru == Q){
-            cout << endl << "===============================" << endl;
+            cout << endl << "=========================================" << endl;
             cout << "Relasi ditemukan" << endl;
             cout << "Info Relasi: " << R->info << endl;
-            cout << endl << "===============================" << endl;
+            cout << endl << "=========================================" << endl;
             return;
         }else{
             R = R->next_Relasi;
         }
     }
-    cout << endl << "===============================" << endl;
+    cout << endl << "=========================================" << endl;
             cout << "Relasi Tidak Ditemukan" << endl;
-    cout << endl << "===============================" << endl;
+    cout << endl << "=========================================" << endl;
 }
 void showGuru(List_Guru L){
     if(L.first == NULL){
         cout << "Data Guru kosong" << endl;
     }else{
         adr_Guru P = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(P != NULL){
             cout << "Nama Guru: " << P->info.nama << endl;
             cout << "Jabatan Guru: " << P->info.jabatan << endl;
@@ -414,7 +426,7 @@ void showGuru(List_Guru L){
             cout << endl;
             P = P->next_Guru;
         }
-        cout << "===============================" << endl;
+        cout << "=========================================" << endl;
     }
 }
 void showMurid(List_Murid L){
@@ -422,7 +434,7 @@ void showMurid(List_Murid L){
         cout << "Data Murid kosong" << endl;
     }else{
         adr_Murid P = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(P != NULL){
             cout << "Nama Murid: " << P->info.nama << endl;
             cout << "Kelas Murid: " << P->info.kelas << endl;
@@ -430,7 +442,7 @@ void showMurid(List_Murid L){
             cout << endl;
             P = P->next_Murid;
         }
-        cout << "===============================" << endl;
+        cout << "=========================================" << endl;
     }
 }
 void showMurid_dariGuru(List_Relasi L, adr_Guru P){
@@ -438,18 +450,18 @@ void showMurid_dariGuru(List_Relasi L, adr_Guru P){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(R != NULL){
             if(R->next_Guru == P){
-                cout << "Nama Murid: " << R->next_Murid->info.nama << endl;
+                cout << "Nama Murid : " << R->next_Murid->info.nama << endl;
                 cout << "Kelas Murid: " << R->next_Murid->info.kelas << endl;
-                cout << "NISN Murid: " << R->next_Murid->info.NISN << endl;
+                cout << "NISN Murid : " << R->next_Murid->info.NISN << endl;
                 cout << "Info Relasi: " << R->info << endl;
                 cout << endl;
             }
             R = R->next_Relasi;
         }
-        cout << "===============================" << endl;
+        cout << "=========================================" << endl;
     }
 }
 void showGuru_dariMurid(List_Relasi L, adr_Murid P){
@@ -457,18 +469,18 @@ void showGuru_dariMurid(List_Relasi L, adr_Murid P){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(R != NULL){
             if(R->next_Murid == P){
-                cout << "Nama Guru: " << R->next_Guru->info.nama << endl;
+                cout << "Nama Guru   : " << R->next_Guru->info.nama << endl;
                 cout << "Jabatan Guru: " << R->next_Guru->info.jabatan << endl;
-                cout << "NUPTK Guru: " << R->next_Guru->info.NUPTK << endl;
-                cout << "Info Relasi: " << R->info << endl;
+                cout << "NUPTK Guru  : " << R->next_Guru->info.NUPTK << endl;
+                cout << "Info Relasi : " << R->info << endl;
                 cout << endl;
             }
             R = R->next_Relasi;
         }
-        cout << "===============================" << endl;
+        cout << "=========================================" << endl;
     }
 }
 void showAll_RelasiGuru(List_Guru Lg, List_Relasi Lr){
@@ -476,12 +488,14 @@ void showAll_RelasiGuru(List_Guru Lg, List_Relasi Lr){
         cout << "Data Guru kosong" << endl;
     }else{
         adr_Guru P = Lg.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(P != NULL){
             cout << "Nama Guru: " << P->info.nama << endl;
             cout << "Jabatan Guru: " << P->info.jabatan << endl;
             cout << "NUPTK Guru: " << P->info.NUPTK << endl;
-            cout << "===============================" << endl;
+            cout << "=========================================" << endl;
+            cout << "Berikut Data Murid dari Guru diatas" << endl;
+            cout << "=========================================" << endl;
             showMurid_dariGuru(Lr, P);
             P = P->next_Guru;
         }
@@ -492,12 +506,14 @@ void showAll_RelasiMurid(List_Murid Lm, List_Relasi Lr){
         cout << "Data Murid kosong" << endl;
     }else{
         adr_Murid P = Lm.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "=========================================" << endl;
         while(P != NULL){
             cout << "Nama Murid: " << P->info.nama << endl;
             cout << "Kelas Murid: " << P->info.kelas << endl;
             cout << "NISN Murid: " << P->info.NISN << endl;
-            cout << "===============================" << endl;
+            cout << "=========================================" << endl;
+            cout << "Berikut Data Guru dari Murid diatas" << endl;
+            cout << "=========================================" << endl;
             showGuru_dariMurid(Lr, P);
             P = P->next_Murid;
         }

@@ -1,11 +1,12 @@
 #include "header.h"
+
 int main()
 {
-    List_dosen Ld;
-    List_mhs Lm;
-    List_relasi Lr;
-    Ld.first = NULL;
+    List_Relasi Lr;
+    List_Dosen Ld;
+    List_Mahasiswa Lm;
     Lr.first = NULL;
+    Ld.first = NULL;
     Lm.first = NULL;
     Lm.last = NULL;
     menu(Lr, Ld, Lm);

@@ -1,68 +1,93 @@
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
+
 #include <iostream>
+#include <string>
+
 using namespace std;
-struct infotype_mahasiswa{
-    string NIM;
+
+struct elm_mhs;
+struct elm_dosen;
+struct elm_relasi;
+
+typedef elm_mhs* adr_mhs;
+typedef elm_dosen* adr_dosen;
+typedef elm_relasi* adr_relasi;
+
+struct infotype_mhs {
+    int NIM;
     string nama;
     float IPK;
 };
-struct infotype_dosen{
+
+struct infotype_dosen {
     string kode;
-    string NIDN;
+    int NIDN;
     string nama;
 };
-typedef struct adr_mahasiswa *elm_mahasiswa;
-typedef struct adr_dosen *elm_dosen;
-typedef struct adr_relasi *elm_relasi;
-struct elm_mahasiswa{
-    infotype_mahasiswa info;
-    adr_mahasiswa next_mhs;
-    adr_mahasiswa prev_mhs;
+
+struct elm_mhs {
+    infotype_mhs info;
+    adr_mhs next_mhs;
+    adr_mhs prev_mhs;
 };
-struct elm_dosen{
+
+struct elm_dosen {
     infotype_dosen info;
     adr_dosen next_dosen;
 };
-struct elm_relasi{
-    adr_mahasiswa next_mhs;
+
+struct elm_relasi {
+    adr_mhs next_mhs;
     adr_dosen next_dosen;
     adr_relasi next_relasi;
+    string info;
 };
-struct List_mhs{
-    adr_mahasiswa first;
-    adr_mahasiswa last;
+
+struct List_mhs {
+    adr_mhs first;
+    adr_mhs last;
 };
-struct List_relasi{
+
+struct List_relasi {
     adr_relasi first;
 };
-struct List_dosen{
+
+struct List_dosen {
     adr_dosen first;
 };
-void selectMenu();
-void createList_Mhs(List_mhs &L);
-void createList_Dosen(List_dosen &L);
-void createList_Relasi(List_relasi &L);
-adr_mahasiswa createElm_Mhs(infotype_mahasiswa data);
-adr_dosen createElm_Dosen(infotype_dosen data);
-adr_relasi createElm_Relasi(infotype_relasi data);
-void insertDosen(List_dosen &L, adr_dosen P);
-void insertMhs(List_mhs &L, adr_mahasiswa P);
-void insertRelasi(List_relasi &L, adr_relasi P);
-void deleteDosen(List_dosen &L, adr_dosen &P);
-void deleteMhs(List_mhs &L, adr_mahasiswa &P);
-void deleteRelasi(List_relasi &L, adr_relasi P);
-void checkRelasi(List_relasi L, adr_mahasiswa P, adr_dosen Q);
-void showDosen(List_dosen L);
-void showMhs(List_mhs L);
-void showMhs_dariDosen(List_relasi L, adr_dosen P);
-void showDosen_dariMhs(List_relasi L, adr_mahasiswa P);
-void showAll_relasiDosen(List_dosen Ld, List_relasi Lr);
-void showAll_relasiMhs(List_dosen Lm, List_relasi Lr);
-void countMhs(List_relasi L, adr_dosen P);
-void countDosen(List_relasi L, adr_mahasiswa P);
-void countMhs_Less(List_relasi Lr, List_dosen Ld);
-void countDosen_Less(List_relasi Lr, List_mhs Lm);
-void editDosen(List_relasi L, adr_dosen P, adr_mahasiswa Q);
-void editMhs(List_relasi L, adr_dosen P, adr_mahasiswa Q);
+
+void insert_dosen(List_dosen &L, adr_dosen P);
+void insert_mhs(List_mhs &L, adr_mhs P);
+void insert_relasi(List_relasi &L, adr_relasi P);
+void delete_dosen(List_dosen &L, adr_dosen &P);
+void delete_Firstdosen(List_dosen &L, adr_dosen &P);
+void delete_Lastdosen(List_dosen &L, adr_dosen &P);
+void delete_Afterdosen(List_dosen &L, adr_dosen &P);
+void delete_mhs(List_mhs &L, adr_mhs &P);
+void delete_Firstmhs(List_mhs &L, adr_mhs &P);
+void delete_Lastmhs(List_mhs &L, adr_mhs &P);
+void delete_Aftermhs(List_mhs &L, adr_mhs &P);
+void delete_relasi(List_relasi &L, adr_relasi &P);
+void find_dosen(List_dosen L, adr_dosen &P);
+void find_mhs(List_mhs L, adr_mhs &P);
+void checkrelasi(List_relasi L, adr_mhs P, adr_dosen Q, adr_relasi &R);
+void show_dosen(List_dosen L);
+void show_mhs(List_mhs L);
+void show_mhs_daridosen(List_relasi L, adr_dosen P);
+void show_dosen_darimhs(List_relasi L, adr_mhs P);
+void show_All_relasidosen(List_dosen Ld, List_relasi Lr);
+void show_All_relasimhs(List_mhs Lm, List_relasi Lr);
+void count_mhs(List_relasi L, adr_dosen P);
+void count_dosen(List_relasi L, adr_mhs P);
+void count_dosenTanpamhs(List_relasi Lr, List_dosen Ld);
+void count_mhsTanpadosen(List_relasi Lr, List_mhs Lm);
+void edit_dosen(List_relasi &L, adr_dosen P, adr_mhs Q, adr_mhs R);
+void edit_mhs(List_relasi &L, adr_mhs P, adr_dosen Q, adr_dosen R);
+void menu(List_relasi &Lr, List_dosen &Ld, List_mhs &Lm);
+void delete_relasimhs(List_relasi &L, adr_mhs &P);
+void delete_relasidosen(List_relasi &L, adr_dosen &P);
+bool checkNIM(List_mhs L, int NIM);
+bool checkNIDN(List_dosen L, int NIDN);
+
 #endif // HEADER_H_INCLUDED

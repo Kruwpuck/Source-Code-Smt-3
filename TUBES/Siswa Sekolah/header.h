@@ -29,7 +29,6 @@ struct elm_Relasi{
     adr_Siswa next_Siswa;
     adr_Sekolah next_Sekolah;
     adr_Relasi next_Relasi;
-    adr_Relasi prev_Relasi;
     infotype_Relasi info;
 };
 struct List_Siswa{
@@ -64,10 +63,10 @@ void showSiswa_dariSekolah(List_Relasi L, adr_Sekolah P);
 void showSekolah_dariSiswa(List_Relasi L, adr_Siswa P);
 void showAll_RelasiSekolah(List_Sekolah Lp, List_Relasi Lr);
 void showAll_RelasiSiswa(List_Siswa Lc, List_Relasi Lr);
-void countSiswa(List_Relasi L, adr_Sekolah P);
-void countSekolah(List_Relasi L, adr_Siswa P);
-void countSiswa_Less(List_Relasi Lr, List_Sekolah Lp);
-void countSekolah_Less(List_Relasi Lr, List_Siswa Lc);
+void hitungSiswa(List_Relasi L, adr_Sekolah P);
+void hitungSekolah(List_Relasi L, adr_Siswa P);
+void hitungSekolahTanpaSiswa(List_Relasi Lr, List_Sekolah Lp);
+void hitungSiswaTanpaSekolah(List_Relasi Lr, List_Siswa Lc);
 void editSekolah(List_Relasi &L, adr_Sekolah P, adr_Siswa Q, adr_Siswa R);
 void editSiswa(List_Relasi &L, adr_Siswa P, adr_Sekolah Q, adr_Sekolah R);
 void menu(List_Relasi &Lr, List_Sekolah &Lp, List_Siswa &Lc);

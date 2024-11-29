@@ -29,7 +29,6 @@ struct elm_Relasi{
     adr_Murid next_Murid;
     adr_Guru next_Guru;
     adr_Relasi next_Relasi;
-    adr_Relasi prev_Relasi;
     infotype_Relasi info;
 };
 struct List_Murid{

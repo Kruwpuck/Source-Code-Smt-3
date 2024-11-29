@@ -6,7 +6,6 @@ int main()
     List_Sekolah Lp;
     List_Siswa Lc;
     Lr.first = NULL;
-    Lr.last = NULL;
     Lp.first = NULL;
     Lc.first = NULL;
     Lc.last = NULL;
