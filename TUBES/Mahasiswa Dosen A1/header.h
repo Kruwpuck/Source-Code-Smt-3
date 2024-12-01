@@ -63,5 +63,5 @@ void showDosenDariMahasiswa(List_Dosen L, adr_Mahasiswa P);
 void countAllRelasiDosen(List_Dosen Ld, List_Mahasiswa Lm); 
 void countRelasiDariMahasiswa(adr_Mahasiswa P); 
 void countMahasiswaTanpaDosen(List_Mahasiswa Lm); 
-void editMahasiswaDariDosen(List_Dosen Ld, List_Mahasiswa Lm, adr_Dosen P); 
+void editMahasiswaDariDosen(adr_Mahasiswa &S, adr_Mahasiswa &T, adr_Dosen P, adr_Relasi &R); 
 void mainMenu(List_Dosen &Ld, List_Mahasiswa &Lm); 

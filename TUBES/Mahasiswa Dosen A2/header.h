@@ -7,7 +7,7 @@ struct infotype_Mahasiswa{
 };
 struct infotype_Dosen{
     string kode;
-    int NIP;
+    int NIDN;
     string nama;
 };
 typedef string infotype_Relasi;
@@ -23,7 +23,6 @@ struct elm_Dosen{
     infotype_Dosen info;
     adr_Dosen next_Dosen;
     adr_Dosen prev_Dosen;
-    List_Relasi hubungan;
 };
 struct elm_Relasi{
     adr_Dosen next_Dosen;
@@ -58,10 +57,10 @@ void TampilkanDosen(List_Dosen L);
 void TampilkanMahasiswa(List_Mahasiswa L); 
 void TampilkanMahasiswaDariDosen(List_Mahasiswa L,adr_Dosen P); 
 void TampilkanAllRelasiDosen(List_Dosen Ld, List_Mahasiswa Lm); 
-void TampilkanAllRelasiMahasiswa(List_Mahasiswa Lm, List_Dosen Ld); 
-void TampilkanDosenDariMahasiswa(List_Dosen L, adr_Mahasiswa P); 
+void TampilkanAllRelasiMahasiswa(List_Mahasiswa Lm); 
+void TampilkanDosenDariMahasiswa(adr_Mahasiswa P); 
 void hitungAllRelasiDosen(List_Dosen Ld, List_Mahasiswa Lm); 
 void hitungRelasiDariMahasiswa(adr_Mahasiswa P); 
 void hitungMahasiswaTanpaDosen(List_Mahasiswa Lm); 
-void editMahasiswaDariDosen(List_Dosen Ld, List_Mahasiswa Lm, adr_Dosen P); 
+void editMahasiswaDariDosen(adr_Mahasiswa &S, adr_Mahasiswa &T, adr_Dosen P, adr_Relasi &R); 
 void menuUtama(List_Dosen &Ld, List_Mahasiswa &Lm); 

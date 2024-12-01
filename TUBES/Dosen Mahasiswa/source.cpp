@@ -29,8 +29,9 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|                        INPUT INVALID                     |" << endl;
         cout << "------------------------------------------------------------" << endl;
-        cout << "|        Salsabila Alya Saputri  //   103032300004         |" << endl;
-        cout << "|       Marthin Saborang Nababan //   103032300125         |" << endl;
+        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
+        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Data Dosen                                          |" << endl;
         cout << "|   2. Data Mahasiswa                                      |" << endl;
@@ -45,8 +46,9 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|                        MENU Dosen                        |" << endl;
         cout << "------------------------------------------------------------" << endl;
-        cout << "|        Salsabila Alya Saputri  //   103032300004         |" << endl;
-        cout << "|       Marthin Saborang Nababan //   103032300125         |" << endl;
+        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
+        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
+        cout << "|         Neng Intan Nuraeni     //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Dosen                                   |" << endl;
         cout << "|   2. Menghapus Dosen                                     |" << endl;
@@ -113,8 +115,9 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|                         MENU Mahasiswa                   |" << endl;
         cout << "------------------------------------------------------------" << endl;
-        cout << "|        Salsabila Alya Saputri  //   103032300004         |" << endl;
-        cout << "|       Marthin Saborang Nababan //   103032300125         |" << endl;
+        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
+        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Mahasiswa                               |" << endl;
         cout << "|   2. Menghapus Mahasiswa                                 |" << endl;
@@ -177,8 +180,9 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|                        MENU RELASI                       |" << endl;
         cout << "------------------------------------------------------------" << endl;
-        cout << "|        Salsabila Alya Saputri  //   103032300004         |" << endl;
-        cout << "|       Marthin Saborang Nababan //   103032300125         |" << endl;
+        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
+        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Relasi                                  |" << endl;
         cout << "|   2. Menghapus Relasi                                    |" << endl;
