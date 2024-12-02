@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1733139397 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\e-commerce etoko\main.cpp
+	"header.h"
+
+1733139380 d:\kuliah\semester 3\std\source-code-smt-3\tubes\e-commerce etoko\header.h
+	<iostream>
+
