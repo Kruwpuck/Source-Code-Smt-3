@@ -1,4 +1,6 @@
 #include "header.h"
+
+
 void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     adr_Relasi R;
     adr_Dosen P,Q;
@@ -12,7 +14,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     cout << "------------------------------------------------------------" << endl;
     cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
     cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-    cout << "|         Neng Intan Nuraeni     //   103032330031         |" << endl;
+    cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
     cout << "------------------------------------------------------------" << endl;
     cout << "|   1. Data Dosen                                          |" << endl;
     cout << "|   2. Data Mahasiswa                                      |" << endl;
@@ -31,7 +33,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Data Dosen                                          |" << endl;
         cout << "|   2. Data Mahasiswa                                      |" << endl;
@@ -48,7 +50,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeni     //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Dosen                                   |" << endl;
         cout << "|   2. Menghapus Dosen                                     |" << endl;
@@ -63,14 +65,16 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cin >> pilihan;
         cout << endl;
         if (pilihan == 1){
+            cin.ignore();
             cout << "Masukkan Nama Dosen: ";
-            cin >> dataP.nama;
+            getline(cin, dataP.nama);
             cout << "Masukkan Kode Dosen: ";
-            cin >> dataP.kode;
+            getline(cin, dataP.kode);
             cout << "Masukkan NIDN Dosen: ";
             cin >> dataP.NIDN;
             while (!checkNIDN(Lp, dataP.NIDN)){
                 cout << "NIDN sudah ada" << endl;
+                cout << "Masukkan NIDN Dosen: ";
                 cin >> dataP.NIDN;
             }
             P = new elm_Dosen;
@@ -91,21 +95,23 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         }else if(pilihan == 4){
             showDosen(Lp);
         }else if(pilihan == 5){
-            hitungMahasiswaTanpaDosen(Lr, Lc);
+            hitungDosenTanpaMahasiswa(Lr, Lp);
         }else if(pilihan == 6){
             findDosen(Lp, P);
-            while (P == NULL){
+            if (P == NULL){
                 cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
+                menu(Lr, Lp, Lc);
+            }else{
+                hitungMahasiswa(Lr, P);
             }
-            hitungMahasiswa(Lr, P);
         }else if(pilihan == 7){
             findDosen(Lp, P);
-            while (P == NULL){
+            if (P == NULL){
                 cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
+                menu(Lr, Lp, Lc);
+            }else{
+                showMahasiswa_dariDosen(Lr, P);
             }
-            showMahasiswa_dariDosen(Lr, P);
         }else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
         }else{
@@ -117,7 +123,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Mahasiswa                               |" << endl;
         cout << "|   2. Menghapus Mahasiswa                                 |" << endl;
@@ -132,8 +138,9 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cin >> pilihan;
         cout << endl;
         if (pilihan == 1){
+            cin.ignore();
             cout << "Masukkan Nama Mahasiswa: ";
-            cin >> dataC.nama;
+            getline(cin, dataC.nama);
             cout << "Masukkan IPK Mahasiswa: ";
             cin >> dataC.IPK;
             cout << "Masukkan NIM Mahasiswa: ";
@@ -163,14 +170,20 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             hitungMahasiswaTanpaDosen(Lr, Lc);
         }else if(pilihan == 6){
             findMahasiswa(Lc, C);
-            while (C == NULL){
+            if (C == NULL){
                 cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
+                menu(Lr, Lp, Lc);
+            }else{
+                hitungDosen(Lr, C);
             }
-            hitungDosen(Lr, C);
         }else if(pilihan == 7){
             findMahasiswa(Lc, C);
-            showDosen_dariMahasiswa(Lr, C);
+            if (C == NULL){
+                cout << "Data Mahasiswa tidak ditemukan" << endl;
+                menu(Lr, Lp, Lc);
+            }else{
+                showDosen_dariMahasiswa(Lr, C);
+            }
         }else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
         }else{
@@ -182,13 +195,13 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Relasi                                  |" << endl;
         cout << "|   2. Menghapus Relasi                                    |" << endl;
         cout << "|   3. Check Relasi                                        |" << endl;
-        cout << "|   4. Menampilkan Mahasiswa & Relasinya                   |" << endl;
-        cout << "|   5. Menampilkan Dosen & Relasinya                       |" << endl;
+        cout << "|   4. Menampilkan Dosen & Relasinya                       |" << endl;
+        cout << "|   5. Menampilkan Mahasiswa & Relasinya                   |" << endl;
         cout << "|   6. Edit Relasi Dari Dosen                              |" << endl;
         cout << "|   7. Edit Relasi Dari Mahasiswa                          |" << endl;
         cout << "|   8. Kembali                                             |" << endl;
@@ -198,91 +211,114 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << endl;
         if (pilihan == 1){
             findDosen(Lp, P);
-            while (P == NULL){
-                cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
-            }
             findMahasiswa(Lc, C);
-            while ( C == NULL){
-                cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
+            if (P == NULL || C == NULL){
+                if (P == NULL){
+                    cout << "Data Dosen tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else if ( C == NULL){
+                    cout << "Data Mahasiswa tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    menu(Lr, Lp, Lc);
+                }
+            }else{
+                cout << "Masukkan Info Relasi: ";
+                cin.ignore();
+                getline(cin, dataR);
+                R = new elm_Relasi;
+                R->info = dataR;
+                R->next_Dosen = P;
+                R->next_Mahasiswa = C;
+                R->next_Relasi = NULL;
+                insertRelasi(Lr, R);
+                cout << "Relasi berhasil ditambahkan" << endl;
             }
-            cout << "Masukkan Info Relasi: ";
-            cin >> dataR;
-            R = new elm_Relasi;
-            R->info = dataR;
-            R->next_Dosen = P;
-            R->next_Mahasiswa = C;
-            R->next_Relasi = NULL;
-            insertRelasi(Lr, R);
-            cout << "Relasi berhasil ditambahkan" << endl;
         }else if (pilihan == 2){
             findDosen(Lp, P);
-            while (P == NULL){
-                cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
-            }
             findMahasiswa(Lc, C);
-            while ( C == NULL){
-                cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
+            if (P == NULL || C == NULL){
+                if (P == NULL){
+                    cout << "Data Dosen tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else if (C == NULL){
+                    cout << "Data Mahasiswa tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    menu(Lr, Lp, Lc);
+                }
+            }else{
+                checkRelasi(Lr, C, P, R);
+                if (R == NULL){
+                    cout << "Relasi tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    deleteRelasi(Lr, R);
+                    delete R;
+                    cout << "Relasi berhasil dihapus" << endl;
+                }
             }
-            checkRelasi(Lr, C, P, R);
-            if (R == NULL){
-                cout << "Relasi tidak ditemukan" << endl;
-            }else{}
-            deleteRelasi(Lr, R);
-            delete R;
-            cout << "Relasi berhasil dihapus" << endl;
         }else if (pilihan == 3){
             findDosen(Lp, P);
-            while (P == NULL){
-                cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
-            }
             findMahasiswa(Lc, C);
-            while ( C == NULL){
-                cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
+            if (P == NULL || C == NULL){
+                if (P == NULL){
+                    cout << "Data Dosen tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else if (C == NULL){
+                    cout << "Data Mahasiswa tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    menu(Lr, Lp, Lc);
+                }
+            }else{
+                checkRelasi(Lr, C, P, R);
             }
-            checkRelasi(Lr, C, P, R);
         }else if (pilihan == 4){
             showAll_RelasiDosen(Lp, Lr);
         }else if (pilihan == 5){
             showAll_RelasiMahasiswa(Lc, Lr);
         }else if (pilihan == 6){
             findDosen(Lp, P);
-            while (P == NULL){
-                cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
-            }
             findMahasiswa(Lc, C);
-            while ( C == NULL){
-                cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
-            }
-            checkRelasi(Lr, C, P, R);
-            if (R != NULL){
-                findMahasiswa(Lc, D);
-                editDosen(Lr, P, C, D);
-                cout << "Relasi berhasil diubah" << endl;
+            if (P == NULL || C == NULL){
+                if (P == NULL){
+                    cout << "Data Dosen tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else if (C == NULL){
+                    cout << "Data Mahasiswa tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    menu(Lr, Lp, Lc);
+                }
+            }else{
+                checkRelasi(Lr, C, P, R);
+                if (R != NULL){
+                    findMahasiswa(Lc, D);
+                    editDosen(Lr, P, C, D);
+                    cout << "Relasi berhasil diubah" << endl;
+                }
             }
         }else if (pilihan == 7){
             findMahasiswa(Lc, C);
-            while ( C == NULL){
-                cout << "Data Mahasiswa tidak ditemukan" << endl;
-                findMahasiswa(Lc, C);
-            }
             findDosen(Lp, P);
-            while (P == NULL){
-                cout << "Data Dosen tidak ditemukan" << endl;
-                findDosen(Lp, P);
-            }
-            checkRelasi(Lr, C, P, R);
-            if (R != NULL){
-                findDosen(Lp, Q);
-                editMahasiswa(Lr, C, P, Q);
-                cout << "Relasi berhasil diubah" << endl;
+            if ( C == NULL || P == NULL){
+                if (C == NULL){
+                    cout << "Data Mahasiswa tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else if (P == NULL){
+                    cout << "Data Dosen tidak ditemukan" << endl;
+                    menu(Lr, Lp, Lc);
+                }else{
+                    menu(Lr, Lp, Lc);
+                }
+            }else{
+                checkRelasi(Lr, C, P, R);
+                if (R != NULL){
+                    findDosen(Lp, Q);
+                    editMahasiswa(Lr, C, P, Q);
+                    cout << "Relasi berhasil diubah" << endl;
+                }
             }
         }else if (pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
@@ -377,6 +413,7 @@ void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
 void findDosen(List_Dosen L, adr_Dosen &P){
     if (L.first == NULL){
         cout << "Data Dosen kosong" << endl;
+        P = NULL;
         return;
     }else{
         int NIDN;
@@ -401,6 +438,7 @@ void findDosen(List_Dosen L, adr_Dosen &P){
 void findMahasiswa(List_Mahasiswa L, adr_Mahasiswa &P){
     if (L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
+        P = NULL;
         return;
     }else{
         int NIM;
@@ -446,13 +484,12 @@ void showDosen(List_Dosen L){
         adr_Dosen P = L.first;
         cout << endl << "------------------------------------------------------------" << endl;
         while(P != NULL){
-            cout << "|   Nama Dosen: " << P->info.nama << endl;
-            cout << "|   Kode Dosen: " << P->info.kode << endl;
-            cout << "|   NIDN Dosen: " << P->info.NIDN << endl;
-            cout << endl;
+            cout << "|   Nama Dosen: " << setw(43) << left << P->info.nama << "|" << endl;
+            cout << "|   Kode Dosen: " << setw(43) << left << P->info.kode << "|" << endl;
+            cout << "|   NIDN Dosen: " << setw(43) << left << P->info.NIDN << "|" << endl;
+            cout << "------------------------------------------------------------" << endl;
             P = P->next_Dosen;
         }
-        cout << "------------------------------------------------------------" << endl;
     }
 }
 void showMahasiswa(List_Mahasiswa L){
@@ -462,103 +499,109 @@ void showMahasiswa(List_Mahasiswa L){
         adr_Mahasiswa P = L.first;
         cout << endl << "------------------------------------------------------------" << endl;
         while(P != NULL){
-            cout << "|   Nama Mahasiswa: " << P->info.nama << endl;
-            cout << "|   IPK Mahasiswa: " << P->info.IPK << endl;
-            cout << "|   NIM Mahasiswa: " << P->info.NIM << endl;
-            cout << endl;
+            cout << "|   Nama Mahasiswa: " << setw(39) << left << P->info.nama << "|" << endl;
+            cout << "|   IPK Mahasiswa: " << setw(40) << left << P->info.IPK << "|" << endl;
+            cout << "|   NIM Mahasiswa: " << setw(40) << left << P->info.NIM << "|" << endl;
+            cout << "------------------------------------------------------------" << endl;
             P = P->next_Mahasiswa;
         }
-        cout << "------------------------------------------------------------" << endl;
     }
 }
-void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P){
-    if(L.first == NULL){
+void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
+    if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
-    }else{
-        adr_Relasi R = L.first;
-        bool ada = false;
-        int count = 0;
-        cout << endl << "------------------------------------------------------------" << endl;
-        while(R != NULL){
-            if(R->next_Dosen == P){
-                ada = true;
-                if (count == 0 && ada){
-                    cout << "|     Mahasiswa Yang Memiliki Relasi Dengan Dosen Diatas     |" << endl;
-                    cout << "------------------------------------------------------------" << endl;
-                }
-                cout << "|   Nama Mahasiswa: " << R->next_Mahasiswa->info.nama << endl;
-                cout << "|   IPK Mahasiswa: " << R->next_Mahasiswa->info.IPK << endl;
-                cout << "|   NIM Mahasiswa: " << R->next_Mahasiswa->info.NIM << endl;
-                cout << "|   Info Relasi: " << R->info << endl;
-                cout << endl;
-                count++;
+        return;
+    }
+
+    adr_Relasi R = L.first;
+    bool ada = false;
+    int count = 0;
+    cout << endl << "------------------------------------------------------------" << endl;
+    while(R != NULL) {
+        if(R->next_Dosen == P) {
+            ada = true;
+            if (count == 0) {
+                cout << "|    Mahasiswa Yang Memiliki Relasi Dengan Dosen Diatas    |" << endl;
+                cout << "------------------------------------------------------------" << endl;
             }
-            R = R->next_Relasi;
+            cout << "|   Nama Mahasiswa: " << setw(39) << left << R->next_Mahasiswa->info.nama << "|" << endl;
+            cout << "|   IPK Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.IPK << "|" << endl;
+            cout << "|   NIM Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.NIM << "|" << endl;
+            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            count++;
         }
-        if (!ada){
-            cout << "|   Dosen tidak memiliki relasi dengan Mahasiswa manapun" << endl;
-        }
+        R = R->next_Relasi;
+    }
+    if (!ada) {
+        cout << "|   Dosen tidak memiliki relasi dengan Mahasiswa manapun   |" << endl;
         cout << "------------------------------------------------------------" << endl;
     }
 }
-void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P){
-    if(L.first == NULL){
+
+void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
+    if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
-    }else{
-        adr_Relasi R = L.first;
-        bool ada = false;
-        int count = 0;
-        cout << endl << "------------------------------------------------------------" << endl;
-        while(R != NULL){
-            if(R->next_Mahasiswa == P){
-                ada = true;
-                if (count == 0 && ada){
-                    cout << "|     Dosen Yang Memiliki Relasi Dengan Mahasiswa Diatas     |" << endl;
-                    cout << "------------------------------------------------------------" << endl;
-                }
-                cout << "|   Nama Dosen: " << R->next_Dosen->info.nama << endl;
-                cout << "|   Kode Dosen: " << R->next_Dosen->info.kode << endl;
-                cout << "|   NIDN Dosen: " << R->next_Dosen->info.NIDN << endl;
-                cout << "|   Info Relasi: " << R->info << endl;
-                cout << endl;
-                count++;
+        return;
+    }
+
+    adr_Relasi R = L.first;
+    bool ada = false;
+    int count = 0;
+    cout << endl << "------------------------------------------------------------" << endl;
+    while(R != NULL) {
+        if(R->next_Mahasiswa == P) {
+            ada = true;
+            if (count == 0) {
+                cout << "|    Dosen Yang Memiliki Relasi Dengan Mahasiswa Diatas    |" << endl;
+                cout << "------------------------------------------------------------" << endl;
             }
-            R = R->next_Relasi;
+            cout << "|   Nama Dosen: " << setw(43) << left << R->next_Dosen->info.nama << "|" << endl;
+            cout << "|   Kode Dosen: " << setw(43) << left << R->next_Dosen->info.kode << "|" << endl;
+            cout << "|   NIDN Dosen: " << setw(43) << left << R->next_Dosen->info.NIDN << "|" << endl;
+            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            count++;
         }
-        if (!ada){
-            cout << "|   Mahasiswa tidak memiliki relasi dengan Dosen manapun" << endl;
-        }
+        R = R->next_Relasi;
+    }
+    if (!ada) {
+        cout << "|   Mahasiswa tidak memiliki relasi dengan Dosen manapun   |" << endl;
         cout << "------------------------------------------------------------" << endl;
     }
 }
-void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr){
-    if(Lp.first == NULL){
+
+void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr) {
+    if(Lp.first == NULL) {
         cout << "Data Dosen kosong" << endl;
-    }else{
-        adr_Dosen P = Lp.first;
-        cout << endl << "------------------------------------------------------------" << endl;
-        while(P != NULL){
-            cout << "|   Nama Dosen: " << P->info.nama << endl;
-            cout << "|   Kode Dosen: " << P->info.kode << endl;
-            cout << "|   NIDN Dosen: " << P->info.NIDN << endl;
-            showMahasiswa_dariDosen(Lr, P);
-            P = P->next_Dosen;
-        }
+        return;
+    }
+
+    adr_Dosen P = Lp.first;
+    cout << endl << "------------------------------------------------------------" << endl;
+    while(P != NULL) {
+        cout << "|   Nama Dosen: " << setw(43) << left << P->info.nama << "|" << endl;
+        cout << "|   Kode Dosen: " << setw(43) << left << P->info.kode << "|" << endl;
+        cout << "|   NIDN Dosen: " << setw(43) << left << P->info.NIDN << "|" << endl;
+        showMahasiswa_dariDosen(Lr, P);
+        P = P->next_Dosen;
     }
 }
-void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr){
-    if(Lc.first == NULL){
+
+void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
+    if(Lc.first == NULL) {
         cout << "Data Mahasiswa kosong" << endl;
-    }else{
-        adr_Mahasiswa P = Lc.first;
-        cout << endl << "------------------------------------------------------------" << endl;
-        while(P != NULL){
-            cout << "|   Nama Mahasiswa: " << P->info.nama << endl;
-            cout << "|   IPK Mahasiswa: " << P->info.IPK << endl;
-            cout << "|   NIM Mahasiswa: " << P->info.NIM << endl;
-            showDosen_dariMahasiswa(Lr, P);
-            P = P->next_Mahasiswa;
-        }
+        return;
+    }
+
+    adr_Mahasiswa P = Lc.first;
+    cout << endl << "------------------------------------------------------------" << endl;
+    while(P != NULL) {
+        cout << "|   Nama Mahasiswa: " << setw(40) << left << P->info.nama << "|" << endl;
+        cout << "|   IPK Mahasiswa: " << setw(41) << left << P->info.IPK << "|" << endl;
+        cout << "|   NIM Mahasiswa: " << setw(41) << left << P->info.NIM << "|" << endl;
+        showDosen_dariMahasiswa(Lr, P);
+        P = P->next_Mahasiswa;
     }
 }
 void hitungMahasiswa(List_Relasi L, adr_Dosen P){

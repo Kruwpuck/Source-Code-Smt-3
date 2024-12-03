@@ -1,6 +1,7 @@
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
 #include <iostream>
+#include <iomanip>
 using namespace std;
 struct infotype_Mahasiswa{
     int NIM;
