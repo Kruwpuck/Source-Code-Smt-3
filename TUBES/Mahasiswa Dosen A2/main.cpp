@@ -1,9 +1,12 @@
-#include <iostream>
-
-using namespace std;
+#include "header.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    List_Dosen Ld;
+    List_Mahasiswa Lm;
+    Ld.first = NULL;
+    Ld.last = NULL;
+    Lm.first = NULL;
+    mainMenu(Ld, Lm);
     return 0;
 }

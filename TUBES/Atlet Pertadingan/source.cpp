@@ -1,5 +1,5 @@
 #include "header.h"
-void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
+void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &La){
     adr_Relasi R;
     adr_Pertandingan P,Q;
     adr_Atlet C,D;
@@ -7,37 +7,61 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
     infotype_Pertandingan dataP;
     infotype_Atlet dataC;
     int pilihan;
-    cout << endl << "===============MENU UTAMA================" << endl;
-    cout << "1. Data Pertandingan" << endl;
-    cout << "2. Data Atlet" << endl;
-    cout << "3. Data Relasi" << endl;
-    cout << "4. Exit" << endl;
+    cout << "================================================================" << endl;
+    cout << "|*|                  Jadwal Atlet Pertandingan               |*|" << endl;
+    cout << "================================================================" << endl;
+    cout << "|*|        Raja Wali Putra Ertha  //   103032300003          |*|" << endl;
+    cout << "|*|       Saladin Setyo Harfianto //   103032330194          |*|" << endl;
+    cout << "================================================================" << endl;
+    cout << "|*|   1. Data Pertandingan                                   |*|" << endl;
+    cout << "|*|   2. Data Atlet                                          |*|" << endl;
+    cout << "|*|   3. Data Relasi                                         |*|" << endl;
+    cout << "|*|   4. Exit                                                |*|" << endl;
+    cout << "================================================================" << endl;
     cout << "Masukkan pilihan: ";
     cin >> pilihan;
     cout << endl;
     if (pilihan == 4){
         return ;
     }
-    if (pilihan < 1 || pilihan > 4){
-        cout << "Pilihan tidak valid" << endl;
+    while (pilihan < 1 || pilihan > 4){
+        cout << "================================================================" << endl;
+        cout << "|*|                        INPUT INVALID                     |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|        Raja Wali Putra Ertha  //   103032300003          |*|" << endl;
+        cout << "|*|       Saladin Setyo Harfianto //   103032330194          |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|   1. Data Pertandingan                                   |*|" << endl;
+        cout << "|*|   2. Data Atlet                                          |*|" << endl;
+        cout << "|*|   3. Data Relasi                                         |*|" << endl;
+        cout << "|*|   4. Keluar                                              |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "Masukkan pilihan: ";
         cin >> pilihan;
+        cout << endl;
     }
     if (pilihan == 1){
-        cout << endl << "===============MENU Pertandingan================" << endl;
-        cout << "1. Tambah Pertandingan" << endl;
-        cout << "2. Hapus Pertandingan" << endl;
-        cout << "3. Cari Pertandingan" << endl;
-        cout << "4. Tampilkan Pertandingan" << endl;
-        cout << "5. Jumlah Pertandingan Tanpa Atlet" << endl;
-        cout << "6. Jumlah Atlet Dari Pertandingan Tertentu" << endl;
-        cout << "7. Data Atlet dari Pertandingan Tertentu" << endl;
-        cout << "8. Kembali" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|                     MENU Pertandingan                    |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|        Raja Wali Putra Ertha  //   103032300003          |*|" << endl;
+        cout << "|*|       Saladin Setyo Harfianto //   103032330194          |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|   1. Menambahkan Pertandingan                            |*|" << endl;
+        cout << "|*|   2. Menghapus Pertandingan                              |*|" << endl;
+        cout << "|*|   3. Mencari Pertandingan                                |*|" << endl;
+        cout << "|*|   4. Menampilkan Pertandingan                            |*|" << endl;
+        cout << "|*|   5. Total Pertandingan Tanpa Atlet                      |*|" << endl;
+        cout << "|*|   6. Total Atlet Dari Pertandingan Tertentu              |*|" << endl;
+        cout << "|*|   7. Menampilkan Atlet dari Pertandingan Tertentu        |*|" << endl;
+        cout << "|*|   8. Kembali                                             |*|" << endl;
+        cout << "================================================================" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
         if (pilihan == 1){
-            cout << "Masukkan Babak Pertandingan: ";
-            cin >> dataP.babak;
+            cout << "Masukkan Nama Pertandingan: ";
+            cin >> dataP.nama;
             cout << "Masukkan Waktu Pertandingan: ";
             cin >> dataP.waktu;
             cout << "Masukkan ID Pertandingan: ";
@@ -64,14 +88,14 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
         }else if(pilihan == 4){
             showPertandingan(Lp);
         }else if(pilihan == 5){
-            countPertandingan_Less(Lr, Lc);
+            hitungAtletTanpaPertandingan(Lr, La);
         }else if(pilihan == 6){
             findPertandingan(Lp, P);
             while (P == NULL){
                 cout << "Data Pertandingan tidak ditemukan" << endl;
                 findPertandingan(Lp, P);
             }
-            countAtlet(Lr, P);
+            hitungAtlet(Lr, P);
         }else if(pilihan == 7){
             findPertandingan(Lp, P);
             while (P == NULL){
@@ -85,57 +109,63 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
             cout << "Pilihan tidak valid" << endl;
         }
     }else if(pilihan == 2){
-        cout << endl << "===============MENU Atlet================" << endl;
-        cout << "1. Tambah Atlet" << endl;
-        cout << "2. Hapus Atlet" << endl;
-        cout << "3. Cari Atlet" << endl;
-        cout << "4. Tampilkan Atlet" << endl;
-        cout << "5. Jumlah Atlet Tanpa Pertandingan" << endl;
-        cout << "6. Jumlah Pertandingan dari Atlet Tertentu" << endl;
-        cout << "7. Data Pertandingan dari Atlet Tertentu" << endl;
-        cout << "8. Kembali" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|                         MENU Atlet                       |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|        Raja Wali Putra Ertha  //   103032300003          |*|" << endl;
+        cout << "|*|       Saladin Setyo Harfianto //   103032330194          |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|   1. Menambahkan Atlet                                   |*|" << endl;
+        cout << "|*|   2. Menghapus Atlet                                     |*|" << endl;
+        cout << "|*|   3. Mencari Atlet                                       |*|" << endl;
+        cout << "|*|   4. Menampilkan Atlet                                   |*|" << endl;
+        cout << "|*|   5. Total Atlet Tanpa Pertandingan                      |*|" << endl;
+        cout << "|*|   6. Total Pertandingan Dari Atlet Tertentu              |*|" << endl;
+        cout << "|*|   7. Menampilkan Pertandingan dari Atlet Tertentu        |*|" << endl;
+        cout << "|*|   8. Kembali                                             |*|" << endl;
+        cout << "================================================================" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
         if (pilihan == 1){
             cout << "Masukkan Nama Atlet: ";
             cin >> dataC.nama;
-            cout << "Masukkan Kelas Atlet: ";
-            cin >> dataC.kelas;
-            cout << "Masukkan NIK Atlet: ";
-            cin >> dataC.NIK;
-            while (!checkNIK(Lc, dataC.NIK)){
-                cout << "NIK sudah ada" << endl;
-                cin >> dataC.NIK;
+            cout << "Masukkan Umur Atlet: ";
+            cin >> dataC.umur;
+            cout << "Masukkan ID Atlet: ";
+            cin >> dataC.ID;
+            while (!checkID(La, dataC.ID)){
+                cout << "ID sudah ada" << endl;
+                cin >> dataC.ID;
             }
             C = new elm_Atlet;
             C->info = dataC;
             C->next_Atlet = NULL;
             C->prev_Atlet = NULL;
-            insertAtlet(Lc, C);
+            insertAtlet(La, C);
             cout << "Data Atlet berhasil ditambahkan" << endl;
         }else if(pilihan == 2){
-            deleteAtlet(Lc, C);
+            deleteAtlet(La, C);
             if (C != NULL){
                 deleteRelasiAtlet(Lr, C);
                 cout << "Atlet dengan nama: " << C->info.nama  << " telah berhasil dihapus" << endl;
                 delete C;
             }
         }else if(pilihan == 3){
-            findAtlet(Lc, C);
+            findAtlet(La, C);
         }else if(pilihan == 4){
-            showAtlet(Lc);
+            showAtlet(La);
         }else if(pilihan == 5){
-            countPertandingan_Less(Lr, Lc);
+            hitungAtletTanpaPertandingan(Lr, La);
         }else if(pilihan == 6){
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while (C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
-            countPertandingan(Lr, C);
+            hitungPertandingan(Lr, C);
         }else if(pilihan == 7){
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             showPertandingan_dariAtlet(Lr, C);
         }else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
@@ -143,15 +173,21 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
             cout << "Pilihan tidak valid" << endl;
         }
     }else if (pilihan == 3){
-        cout << endl << "===============MENU RELASI================" << endl;
-        cout << "1. Tambah Relasi" << endl;
-        cout << "2. Hapus Relasi" << endl;
-        cout << "3. Check Relasi" << endl;
-        cout << "4. Tampilkan Atlet & Relasinya" << endl;
-        cout << "5. Tampilkan Pertandingan & Relasinya" << endl;
-        cout << "6. Edit Relasi Dari Pertandingan" << endl;
-        cout << "7. Edit Relasi Dari Atlet" << endl;
-        cout << "8. Kembali" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|                        MENU RELASI                       |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|        Raja Wali Putra Ertha  //   103032300003          |*|" << endl;
+        cout << "|*|       Saladin Setyo Harfianto //   103032330194          |*|" << endl;
+        cout << "================================================================" << endl;
+        cout << "|*|   1. Menambahkan Relasi                                  |*|" << endl;
+        cout << "|*|   2. Menghapus Relasi                                    |*|" << endl;
+        cout << "|*|   3. Check Relasi                                        |*|" << endl;
+        cout << "|*|   4. Menampilkan Atlet & Relasinya                       |*|" << endl;
+        cout << "|*|   5. Menampilkan Pertandingan & Relasinya                |*|" << endl;
+        cout << "|*|   6. Edit Relasi Dari Pertandingan                       |*|" << endl;
+        cout << "|*|   7. Edit Relasi Dari Atlet                              |*|" << endl;
+        cout << "|*|   8. Kembali                                             |*|" << endl;
+        cout << "================================================================" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
@@ -161,10 +197,10 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
                 cout << "Data Pertandingan tidak ditemukan" << endl;
                 findPertandingan(Lp, P);
             }
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while ( C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
             cout << "Masukkan Info Relasi: ";
             cin >> dataR;
@@ -173,7 +209,6 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
             R->next_Pertandingan = P;
             R->next_Atlet = C;
             R->next_Relasi = NULL;
-            R->prev_Relasi = NULL;
             insertRelasi(Lr, R);
             cout << "Relasi berhasil ditambahkan" << endl;
         }else if (pilihan == 2){
@@ -182,10 +217,10 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
                 cout << "Data Pertandingan tidak ditemukan" << endl;
                 findPertandingan(Lp, P);
             }
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while ( C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
             checkRelasi(Lr, C, P, R);
             if (R == NULL){
@@ -200,38 +235,38 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
                 cout << "Data Pertandingan tidak ditemukan" << endl;
                 findPertandingan(Lp, P);
             }
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while ( C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
             checkRelasi(Lr, C, P, R);
         }else if (pilihan == 4){
             showAll_RelasiPertandingan(Lp, Lr);
         }else if (pilihan == 5){
-            showAll_RelasiAtlet(Lc, Lr);
+            showAll_RelasiAtlet(La, Lr);
         }else if (pilihan == 6){
             findPertandingan(Lp, P);
             while (P == NULL){
                 cout << "Data Pertandingan tidak ditemukan" << endl;
                 findPertandingan(Lp, P);
             }
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while ( C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
             checkRelasi(Lr, C, P, R);
             if (R != NULL){
-                findAtlet(Lc, D);
+                findAtlet(La, D);
                 editPertandingan(Lr, P, C, D);
                 cout << "Relasi berhasil diubah" << endl;
             }
         }else if (pilihan == 7){
-            findAtlet(Lc, C);
+            findAtlet(La, C);
             while ( C == NULL){
                 cout << "Data Atlet tidak ditemukan" << endl;
-                findAtlet(Lc, C);
+                findAtlet(La, C);
             }
             findPertandingan(Lp, P);
             while (P == NULL){
@@ -250,7 +285,7 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc){
             cout << "Pilihan tidak valid" << endl;
         }
     }
-    menu(Lr, Lp, Lc);
+    menu(Lr, Lp, La);
 }
 void insertPertandingan(List_Pertandingan &L, adr_Pertandingan P){
     if(L.first == NULL){
@@ -276,7 +311,6 @@ void insertRelasi(List_Relasi &L, adr_Relasi P){
         L.last = P;
     }else{
         P->next_Relasi = L.first;
-        L.first->prev_Relasi = P;
         L.first = P;
     }
 }
@@ -323,15 +357,15 @@ void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
         if(P == L.first){
             L.first = P->next_Relasi;
             P->next_Relasi = NULL;
-        }else if(P == L.last){
-            L.last = P->prev_Relasi;
-            P->prev_Relasi = NULL;
-            L.last->next_Relasi = NULL;
         }else{
-            P->prev_Relasi->next_Relasi = P->next_Relasi;
-            P->next_Relasi->prev_Relasi = P->prev_Relasi;
-            P->next_Relasi = NULL;
-            P->prev_Relasi = NULL;
+            adr_Relasi Q = L.first;
+            while(Q->next_Relasi != P){
+                Q = Q->next_Relasi;
+            }
+            if (P->next_Relasi != NULL){
+                Q->next_Relasi = P->next_Relasi;
+            }
+            Q->next_Relasi = NULL;
         }
     }
 }
@@ -347,11 +381,11 @@ void findPertandingan(List_Pertandingan L, adr_Pertandingan &P){
         while(P != NULL){
             if(P->info.ID == ID){
                 cout << "Data Pertandingan ditemukan" << endl;
-                cout << endl << "===============================" << endl;
-                cout << "Nama Pertandingan: " << P->info.nama << endl;
-                cout << "Waktu Pertandingan: " << P->info.waktu << endl;
-                cout << "ID Pertandingan: " << P->info.ID << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "==============================================================" << endl;
+                cout << "|*|   Nama Pertandingan: " << P->info.nama << endl;
+                cout << "|*|   Waktu Pertandingan: " << P->info.waktu << endl;
+                cout << "|*|   ID Pertandingan: " << P->info.ID << endl;
+                cout << endl << "==============================================================" << endl;
                 return;
             }else{
                 P = P->next_Pertandingan;
@@ -364,18 +398,18 @@ void findAtlet(List_Atlet L, adr_Atlet &P){
         cout << "Data Atlet kosong" << endl;
         return;
     }else{
-        int NIK;
-        cout << "Masukkan NIK Atlet: ";
-        cin >> NIK;
+        int ID;
+        cout << "Masukkan ID Atlet: ";
+        cin >> ID;
         P = L.first;
         while(P != NULL){
-            if(P->info.NIK == NIK){
+            if(P->info.ID == ID){
                 cout << "Data Atlet ditemukan" << endl;
-                cout << endl << "===============================" << endl;
-                cout << "Nama Atlet: " << P->info.nama << endl;
-                cout << "Kelas Atlet: " << P->info.kelas << endl;
-                cout << "NIK Atlet: " << P->info.NIK << endl;
-                cout << endl << "===============================" << endl;
+                cout << endl << "==============================================================" << endl;
+                cout << "|*|   Nama Atlet: " << P->info.nama << endl;
+                cout << "|*|   Umur Atlet: " << P->info.umur << endl;
+                cout << "|*|   ID Atlet: " << P->info.ID << endl;
+                cout << endl << "==============================================================" << endl;
                 return;
             }else{
                 P = P->next_Atlet;
@@ -387,33 +421,33 @@ void checkRelasi(List_Relasi L, adr_Atlet P, adr_Pertandingan Q, adr_Relasi &R){
     R = L.first;
     while(R != NULL){
         if(R->next_Atlet == P && R->next_Pertandingan == Q){
-            cout << endl << "===============================" << endl;
-            cout << "Relasi ditemukan" << endl;
-            cout << "Info Relasi: " << R->info << endl;
-            cout << endl << "===============================" << endl;
+            cout << endl << "==============================================================" << endl;
+            cout << "|*|   Relasi ditemukan" << endl;
+            cout << "|*|   Info Relasi: " << R->info << endl;
+            cout << endl << "==============================================================" << endl;
             return;
         }else{
             R = R->next_Relasi;
         }
     }
-    cout << endl << "===============================" << endl;
-            cout << "Relasi Tidak Ditemukan" << endl;
-    cout << endl << "===============================" << endl;
+    cout << endl << "==============================================================" << endl;
+            cout << "|*|   Relasi Tidak Ditemukan" << endl;
+    cout << endl << "==============================================================" << endl;
 }
 void showPertandingan(List_Pertandingan L){
     if(L.first == NULL){
         cout << "Data Pertandingan kosong" << endl;
     }else{
         adr_Pertandingan P = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "==============================================================" << endl;
         while(P != NULL){
-            cout << "Babak Pertandingan: " << P->info.babak << endl;
-            cout << "Waktu Pertandingan: " << P->info.waktu << endl;
-            cout << "ID Pertandingan: " << P->info.ID << endl;
+            cout << "|*|   Nama Pertandingan: " << P->info.nama << endl;
+            cout << "|*|   Waktu Pertandingan: " << P->info.waktu << endl;
+            cout << "|*|   ID Pertandingan: " << P->info.ID << endl;
             cout << endl;
             P = P->next_Pertandingan;
         }
-        cout << "===============================" << endl;
+        cout << "==============================================================" << endl;
     }
 }
 void showAtlet(List_Atlet L){
@@ -421,15 +455,15 @@ void showAtlet(List_Atlet L){
         cout << "Data Atlet kosong" << endl;
     }else{
         adr_Atlet P = L.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "==============================================================" << endl;
         while(P != NULL){
-            cout << "Nama Atlet: " << P->info.nama << endl;
-            cout << "Kelas Atlet: " << P->info.kelas << endl;
-            cout << "NIK Atlet: " << P->info.NIK << endl;
+            cout << "|*|   Nama Atlet: " << P->info.nama << endl;
+            cout << "|*|   Umur Atlet: " << P->info.umur << endl;
+            cout << "|*|   ID Atlet: " << P->info.ID << endl;
             cout << endl;
             P = P->next_Atlet;
         }
-        cout << "===============================" << endl;
+        cout << "==============================================================" << endl;
     }
 }
 void showAtlet_dariPertandingan(List_Relasi L, adr_Pertandingan P){
@@ -437,18 +471,29 @@ void showAtlet_dariPertandingan(List_Relasi L, adr_Pertandingan P){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        cout << endl << "===============================" << endl;
+        bool ada = false;
+        int count = 0;
+        cout << endl << "==============================================================" << endl;
         while(R != NULL){
             if(R->next_Pertandingan == P){
-                cout << "Nama Atlet: " << R->next_Atlet->info.nama << endl;
-                cout << "Kelas Atlet: " << R->next_Atlet->info.kelas << endl;
-                cout << "NIK Atlet: " << R->next_Atlet->info.NIK << endl;
-                cout << "Info Relasi: " << R->info << endl;
+                ada = true;
+                if (count == 0 && ada){
+                    cout << "|*|  Atlet Yang Memiliki Relasi Dengan Pertandingan Diatas |*|" << endl;
+                    cout << "==============================================================" << endl;
+                }
+                cout << "|*|   Nama Atlet: " << R->next_Atlet->info.nama << endl;
+                cout << "|*|   Umur Atlet: " << R->next_Atlet->info.umur << endl;
+                cout << "|*|   ID Atlet: " << R->next_Atlet->info.ID << endl;
+                cout << "|*|   Info Relasi: " << R->info << endl;
                 cout << endl;
+                count++;
             }
             R = R->next_Relasi;
         }
-        cout << "===============================" << endl;
+        if (!ada){
+            cout << "|*|   Pertandingan tidak memiliki relasi dengan Atlet manapun" << endl;
+        }
+        cout << "==============================================================" << endl;
     }
 }
 void showPertandingan_dariAtlet(List_Relasi L, adr_Atlet P){
@@ -456,18 +501,29 @@ void showPertandingan_dariAtlet(List_Relasi L, adr_Atlet P){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        cout << endl << "===============================" << endl;
+        bool ada = false;
+        int count = 0;
+        cout << endl << "==============================================================" << endl;
         while(R != NULL){
             if(R->next_Atlet == P){
-                cout << "Nama Pertandingan: " << R->next_Pertandingan->info.nama << endl;
-                cout << "Waktu Pertandingan: " << R->next_Pertandingan->info.waktu << endl;
-                cout << "ID Pertandingan: " << R->next_Pertandingan->info.ID << endl;
-                cout << "Info Relasi: " << R->info << endl;
+                ada = true;
+                if (count == 0 && ada){
+                    cout << "|*|     Pertandingan Yang Memiliki Relasi Dengan Atlet Diatas     |*|" << endl;
+                    cout << "==============================================================" << endl;
+                }
+                cout << "|*|   Nama Pertandingan: " << R->next_Pertandingan->info.nama << endl;
+                cout << "|*|   Waktu Pertandingan: " << R->next_Pertandingan->info.waktu << endl;
+                cout << "|*|   ID Pertandingan: " << R->next_Pertandingan->info.ID << endl;
+                cout << "|*|   Info Relasi: " << R->info << endl;
                 cout << endl;
+                count++;
             }
             R = R->next_Relasi;
         }
-        cout << "===============================" << endl;
+        if (!ada){
+            cout << "|*|   Atlet tidak memiliki relasi dengan Pertandingan manapun" << endl;
+        }
+        cout << "==============================================================" << endl;
     }
 }
 void showAll_RelasiPertandingan(List_Pertandingan Lp, List_Relasi Lr){
@@ -475,34 +531,32 @@ void showAll_RelasiPertandingan(List_Pertandingan Lp, List_Relasi Lr){
         cout << "Data Pertandingan kosong" << endl;
     }else{
         adr_Pertandingan P = Lp.first;
-        cout << endl << "===============================" << endl;
+        cout << endl << "==============================================================" << endl;
         while(P != NULL){
-            cout << "Nama Pertandingan: " << P->info.nama << endl;
-            cout << "Waktu Pertandingan: " << P->info.waktu << endl;
-            cout << "ID Pertandingan: " << P->info.ID << endl;
-            cout << "===============================" << endl;
+            cout << "|*|   Nama Pertandingan: " << P->info.nama << endl;
+            cout << "|*|   Waktu Pertandingan: " << P->info.waktu << endl;
+            cout << "|*|   ID Pertandingan: " << P->info.ID << endl;
             showAtlet_dariPertandingan(Lr, P);
             P = P->next_Pertandingan;
         }
     }
 }
-void showAll_RelasiAtlet(List_Atlet Lc, List_Relasi Lr){
-    if(Lc.first == NULL){
+void showAll_RelasiAtlet(List_Atlet La, List_Relasi Lr){
+    if(La.first == NULL){
         cout << "Data Atlet kosong" << endl;
     }else{
-        adr_Atlet P = Lc.first;
-        cout << endl << "===============================" << endl;
+        adr_Atlet P = La.first;
+        cout << endl << "==============================================================" << endl;
         while(P != NULL){
-            cout << "Nama Atlet: " << P->info.nama << endl;
-            cout << "Kelas Atlet: " << P->info.kelas << endl;
-            cout << "NIK Atlet: " << P->info.NIK << endl;
-            cout << "===============================" << endl;
+            cout << "|*|   Nama Atlet: " << P->info.nama << endl;
+            cout << "|*|   Umur Atlet: " << P->info.umur << endl;
+            cout << "|*|   ID Atlet: " << P->info.ID << endl;
             showPertandingan_dariAtlet(Lr, P);
             P = P->next_Atlet;
         }
     }
 }
-void countAtlet(List_Relasi L, adr_Pertandingan P){
+void hitungAtlet(List_Relasi L, adr_Pertandingan P){
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
@@ -514,10 +568,10 @@ void countAtlet(List_Relasi L, adr_Pertandingan P){
             }
             R = R->next_Relasi;
         }
-        cout << "Jumlah Atlet di Pertandingan " << P->info.nama << ": " << hitung << endl;
+        cout << "|*|   Total Atlet di Pertandingan " << P->info.nama << ": " << hitung << endl;
     }
 }
-void countPertandingan(List_Relasi L, adr_Atlet P){
+void hitungPertandingan(List_Relasi L, adr_Atlet P){
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
@@ -529,10 +583,10 @@ void countPertandingan(List_Relasi L, adr_Atlet P){
             }
             R = R->next_Relasi;
         }
-        cout << "Jumlah Pertandingan dari Atlet " << P->info.nama << ": " << hitung << endl;
+        cout << "|*|   Total Pertandingan dari Atlet " << P->info.nama << ": " << hitung << endl;
     }
 }
-void countAtlet_Less(List_Relasi Lr, List_Pertandingan Lp){
+void hitungPertandinganTanpaAtlet(List_Relasi Lr, List_Pertandingan Lp){
     if(Lr.first == NULL){
         showPertandingan(Lp);
     }else{
@@ -553,14 +607,14 @@ void countAtlet_Less(List_Relasi Lr, List_Pertandingan Lp){
             }
             P = P->next_Pertandingan;
         }
-        cout << "Jumlah Pertandingan yang tidak memiliki Atlet: " << hitung << endl;
+        cout << "|*|   Total Pertandingan yang tidak memiliki Atlet: " << hitung << endl;
     }
 }
-void countPertandingan_Less(List_Relasi Lr, List_Atlet Lc){
+void hitungAtletTanpaPertandingan(List_Relasi Lr, List_Atlet La){
     if(Lr.first == NULL){
-        showAtlet(Lc);
+        showAtlet(La);
     }else{
-        adr_Atlet P = Lc.first;
+        adr_Atlet P = La.first;
         bool found;
         int hitung = 0;
         adr_Relasi R;
@@ -578,7 +632,7 @@ void countPertandingan_Less(List_Relasi Lr, List_Atlet Lc){
             }
             P = P->next_Atlet;
         }
-        cout << "Jumlah Atlet yang tidak memiliki Pertandingan: " << hitung << endl;
+        cout << "|*|   Total Atlet yang tidak memiliki Pertandingan: " << hitung << endl;
     }
 }
 void editPertandingan(List_Relasi &L, adr_Pertandingan P, adr_Atlet Q, adr_Atlet R){
@@ -691,10 +745,10 @@ void deleteAfterPertandingan(List_Pertandingan &L, adr_Pertandingan &P){
     Q->next_Pertandingan = P->next_Pertandingan;
     P->next_Pertandingan = NULL;
 }
-bool checkNIK(List_Atlet L, int NIK){
+bool checkID(List_Atlet L, int ID){
     adr_Atlet P = L.first;
     while (P != NULL){
-        if (P->info.NIK == NIK){
+        if (P->info.ID == ID){
             return false;
         }
         P = P->next_Atlet;

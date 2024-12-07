@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1733337897 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\mahasiswa dosen a1\main.cpp
+	"header.h"
+
+1733338800 d:\kuliah\semester 3\std\source-code-smt-3\tubes\mahasiswa dosen a1\header.h
+	<iostream>
+
+1733341278 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\mahasiswa dosen a1\source.cpp
+	"header.h"
+

@@ -3,32 +3,33 @@
 #include <iostream>
 using namespace std;
 struct infotype_Atlet{
-    int NIK;
+    int ID;
     string nama;
     string umur;
 };
 struct infotype_Pertandingan{
-    string babak;
-    int ID;
     string waktu;
+    int ID;
+    string nama;
 };
-typedef struct adr_Atlet *elm_Atlet;
-typedef struct adr_Pertandingan *elm_Pertandingan;
-typedef struct adr_Relasi *elm_Relasi;
+typedef string infotype_Relasi;
+typedef struct elm_Atlet *adr_Atlet;
+typedef struct elm_Pertandingan *adr_Pertandingan;
+typedef struct elm_Relasi *adr_Relasi;
 struct elm_Atlet{
     infotype_Atlet info;
     adr_Atlet next_Atlet;
+    adr_Atlet prev_Atlet;
 };
 struct elm_Pertandingan{
     infotype_Pertandingan info;
     adr_Pertandingan next_Pertandingan;
-    adr_Pertandingan prev_Pertandingan;
 };
 struct elm_Relasi{
     adr_Atlet next_Atlet;
     adr_Pertandingan next_Pertandingan;
     adr_Relasi next_Relasi;
-    string info;
+    infotype_Relasi info;
 };
 struct List_Atlet{
     adr_Atlet first;
@@ -36,6 +37,7 @@ struct List_Atlet{
 };
 struct List_Relasi{
     adr_Relasi first;
+    adr_Relasi last;
 };
 struct List_Pertandingan{
     adr_Pertandingan first;
@@ -60,17 +62,16 @@ void showAtlet(List_Atlet L);
 void showAtlet_dariPertandingan(List_Relasi L, adr_Pertandingan P);
 void showPertandingan_dariAtlet(List_Relasi L, adr_Atlet P);
 void showAll_RelasiPertandingan(List_Pertandingan Lp, List_Relasi Lr);
-void showAll_RelasiAtlet(List_Atlet Lc, List_Relasi Lr);
-void countAtlet(List_Relasi L, adr_Pertandingan P);
-void countPertandingan(List_Relasi L, adr_Atlet P);
-void countAtlet_Less(List_Relasi Lr, List_Pertandingan Lp);
-void countPertandingan_Less(List_Relasi Lr, List_Atlet Lc);
+void showAll_RelasiAtlet(List_Atlet La, List_Relasi Lr);
+void hitungAtlet(List_Relasi L, adr_Pertandingan P);
+void hitungPertandingan(List_Relasi L, adr_Atlet P);
+void hitungPertandinganTanpaAtlet(List_Relasi Lr, List_Pertandingan Lp);
+void hitungAtletTanpaPertandingan(List_Relasi Lr, List_Atlet La);
 void editPertandingan(List_Relasi &L, adr_Pertandingan P, adr_Atlet Q, adr_Atlet R);
 void editAtlet(List_Relasi &L, adr_Atlet P, adr_Pertandingan Q, adr_Pertandingan R);
-void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &Lc);
+void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &La);
 void deleteRelasiAtlet(List_Relasi &L, adr_Atlet &P);
 void deleteRelasiPertandingan(List_Relasi &L, adr_Pertandingan &P);
-bool checkNIK(List_Atlet L, int NIK);
+bool checkID(List_Atlet L, int ID);
 bool checkID(List_Pertandingan L, int ID);
-
 #endif // HEADER_H_INCLUDED

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1733543844 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\customer toko\main.cpp
+	"header.h"
+
+1733543843 d:\kuliah\semester 3\std\source-code-smt-3\tubes\customer toko\header.h
+	<iostream>
+
