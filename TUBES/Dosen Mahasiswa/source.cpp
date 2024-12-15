@@ -8,13 +8,13 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     infotype_Relasi dataR;
     infotype_Dosen dataP;
     infotype_Mahasiswa dataC;
-    int pilihan;
+    long long pilihan;
     cout << "------------------------------------------------------------" << endl;
     cout << "|   SPADM III Sistem Pencatatan Akademik Dosen-Mahasiswa   |" << endl;
     cout << "------------------------------------------------------------" << endl;
     cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
     cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-    cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
+    cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
     cout << "------------------------------------------------------------" << endl;
     cout << "|   1. Data Dosen                                          |" << endl;
     cout << "|   2. Data Mahasiswa                                      |" << endl;
@@ -33,7 +33,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Data Dosen                                          |" << endl;
         cout << "|   2. Data Mahasiswa                                      |" << endl;
@@ -50,7 +50,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Dosen                                   |" << endl;
         cout << "|   2. Menghapus Dosen                                     |" << endl;
@@ -72,8 +72,8 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             getline(cin, dataP.kode);
             cout << "Masukkan NIDN Dosen: ";
             cin >> dataP.NIDN;
-            while (!checkNIDN(Lp, dataP.NIDN)){
-                cout << "NIDN sudah ada" << endl;
+            while (!checkNIDN(Lp, dataP.NIDN) || dataP.NIDN <= 0){
+                cout << "NIDN INVALID ATAU SUDAH ADA" << endl;
                 cout << "Masukkan NIDN Dosen: ";
                 cin >> dataP.NIDN;
             }
@@ -123,7 +123,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "------------------------------------------------------------" << endl;
         cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
         cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
+        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
         cout << "------------------------------------------------------------" << endl;
         cout << "|   1. Menambahkan Mahasiswa                               |" << endl;
         cout << "|   2. Menghapus Mahasiswa                                 |" << endl;
@@ -143,9 +143,14 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             getline(cin, dataC.nama);
             cout << "Masukkan IPK Mahasiswa: ";
             cin >> dataC.IPK;
+            while (dataC.IPK < 0 || dataC.IPK > 4){
+                cout << "IPK INVALID" << endl;
+                cout << "Masukkan IPK Mahasiswa: ";
+                cin >> dataC.IPK;
+            }
             cout << "Masukkan NIM Mahasiswa: ";
             cin >> dataC.NIM;
-            while (!checkNIM(Lc, dataC.NIM)){
+            while (!checkNIM(Lc, dataC.NIM) || dataC.NIM <= 0){
                 cout << "NIM sudah ada" << endl;
                 cin >> dataC.NIM;
             }
@@ -329,6 +334,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     menu(Lr, Lp, Lc);
 }
 void insertDosen(List_Dosen &L, adr_Dosen P){
+    // point A
     if(L.first == NULL){
         L.first = P;
     }else{
@@ -337,6 +343,7 @@ void insertDosen(List_Dosen &L, adr_Dosen P){
     }
 }
 void insertMahasiswa(List_Mahasiswa &L, adr_Mahasiswa P){
+    // point B
     if(L.first == NULL){
         L.first = P;
         L.last = P;
@@ -347,6 +354,7 @@ void insertMahasiswa(List_Mahasiswa &L, adr_Mahasiswa P){
     }
 }
 void insertRelasi(List_Relasi &L, adr_Relasi P){
+    // point C
     if(L.first == NULL){
         L.first = P;
         L.last = P;
@@ -356,14 +364,15 @@ void insertRelasi(List_Relasi &L, adr_Relasi P){
     }
 }
 void deleteDosen(List_Dosen &L, adr_Dosen &P){
+    // point D
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
     }
     findDosen(L, P);
-    while (P == NULL){
+    if (P == NULL){
         cout << "Data Dosen tidak ditemukan" << endl;
-        findDosen(L, P);
+        return;
     }
     if(P == L.first){
         deleteFirstDosen(L, P);
@@ -374,6 +383,7 @@ void deleteDosen(List_Dosen &L, adr_Dosen &P){
     }
 }
 void deleteMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
+    // point E
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -392,6 +402,7 @@ void deleteMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     }
 }
 void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
+    // point F
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
@@ -411,12 +422,13 @@ void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
     }
 }
 void findDosen(List_Dosen L, adr_Dosen &P){
+    // point G
     if (L.first == NULL){
         cout << "Data Dosen kosong" << endl;
         P = NULL;
         return;
     }else{
-        int NIDN;
+        long long NIDN;
         cout << "Masukkan NIDN Dosen: ";
         cin >> NIDN;
         P = L.first;
@@ -436,12 +448,13 @@ void findDosen(List_Dosen L, adr_Dosen &P){
     }
 }
 void findMahasiswa(List_Mahasiswa L, adr_Mahasiswa &P){
+    // point H
     if (L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         P = NULL;
         return;
     }else{
-        int NIM;
+        long long NIM;
         cout << "Masukkan NIM Mahasiswa: ";
         cin >> NIM;
         P = L.first;
@@ -461,6 +474,7 @@ void findMahasiswa(List_Mahasiswa L, adr_Mahasiswa &P){
     }
 }
 void checkRelasi(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q, adr_Relasi &R){
+    // point I
     R = L.first;
     while(R != NULL){
         if(R->next_Mahasiswa == P && R->next_Dosen == Q){
@@ -478,6 +492,7 @@ void checkRelasi(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q, adr_Relasi &R){
     cout << endl << "------------------------------------------------------------" << endl;
 }
 void showDosen(List_Dosen L){
+    // point J
     if(L.first == NULL){
         cout << "Data Dosen kosong" << endl;
     }else{
@@ -493,6 +508,7 @@ void showDosen(List_Dosen L){
     }
 }
 void showMahasiswa(List_Mahasiswa L){
+    // point K
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
     }else{
@@ -508,6 +524,7 @@ void showMahasiswa(List_Mahasiswa L){
     }
 }
 void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
+    // point L
     if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
         return;
@@ -515,7 +532,7 @@ void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
 
     adr_Relasi R = L.first;
     bool ada = false;
-    int count = 0;
+    long long count = 0;
     cout << endl << "------------------------------------------------------------" << endl;
     while(R != NULL) {
         if(R->next_Dosen == P) {
@@ -540,6 +557,7 @@ void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
 }
 
 void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
+    // point M
     if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
         return;
@@ -547,7 +565,7 @@ void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
 
     adr_Relasi R = L.first;
     bool ada = false;
-    int count = 0;
+    long long count = 0;
     cout << endl << "------------------------------------------------------------" << endl;
     while(R != NULL) {
         if(R->next_Mahasiswa == P) {
@@ -572,6 +590,7 @@ void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
 }
 
 void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr) {
+    // point N
     if(Lp.first == NULL) {
         cout << "Data Dosen kosong" << endl;
         return;
@@ -589,6 +608,7 @@ void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr) {
 }
 
 void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
+    // point O
     if(Lc.first == NULL) {
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -605,11 +625,12 @@ void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
     }
 }
 void hitungMahasiswa(List_Relasi L, adr_Dosen P){
+    // point P
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        int hitung = 0;
+        long long hitung = 0;
         while(R != NULL){
             if(R->next_Dosen == P){
                 hitung++;
@@ -620,11 +641,12 @@ void hitungMahasiswa(List_Relasi L, adr_Dosen P){
     }
 }
 void hitungDosen(List_Relasi L, adr_Mahasiswa P){
+    // point Q
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
     }else{
         adr_Relasi R = L.first;
-        int hitung = 0;
+        long long hitung = 0;
         while(R != NULL){
             if(R->next_Mahasiswa == P){
                 hitung++;
@@ -635,12 +657,13 @@ void hitungDosen(List_Relasi L, adr_Mahasiswa P){
     }
 }
 void hitungDosenTanpaMahasiswa(List_Relasi Lr, List_Dosen Lp){
+    // point R
     if(Lr.first == NULL){
         showDosen(Lp);
     }else{
         adr_Dosen P = Lp.first;
         bool found;
-        int hitung = 0;
+        long long hitung = 0;
         while (P != NULL){
             adr_Relasi R = Lr.first;
             found = false;
@@ -659,12 +682,13 @@ void hitungDosenTanpaMahasiswa(List_Relasi Lr, List_Dosen Lp){
     }
 }
 void hitungMahasiswaTanpaDosen(List_Relasi Lr, List_Mahasiswa Lc){
+    // point S
     if(Lr.first == NULL){
         showMahasiswa(Lc);
     }else{
         adr_Mahasiswa P = Lc.first;
         bool found;
-        int hitung = 0;
+        long long hitung = 0;
         adr_Relasi R;
         while (P != NULL){
             R = Lr.first;
@@ -684,13 +708,13 @@ void hitungMahasiswaTanpaDosen(List_Relasi Lr, List_Mahasiswa Lc){
     }
 }
 void editDosen(List_Relasi &L, adr_Dosen P, adr_Mahasiswa Q, adr_Mahasiswa R){
-    adr_Relasi S = L.first;
+    // point T
     adr_Relasi T = NULL;
     checkRelasi(L, Q, P, T);
     T->next_Mahasiswa = R;
 }
 void editMahasiswa(List_Relasi &L, adr_Mahasiswa P, adr_Dosen Q, adr_Dosen R){
-    adr_Relasi S = L.first;
+    // point T
     adr_Relasi T = NULL;
     checkRelasi(L, P, Q, T);
     T->next_Dosen = R;
@@ -793,7 +817,7 @@ void deleteAfterDosen(List_Dosen &L, adr_Dosen &P){
     Q->next_Dosen = P->next_Dosen;
     P->next_Dosen = NULL;
 }
-bool checkNIM(List_Mahasiswa L, int NIM){
+bool checkNIM(List_Mahasiswa L, long long NIM){
     adr_Mahasiswa P = L.first;
     while (P != NULL){
         if (P->info.NIM == NIM){
@@ -803,7 +827,7 @@ bool checkNIM(List_Mahasiswa L, int NIM){
     }
     return true;
 }
-bool checkNIDN(List_Dosen L, int NIDN){
+bool checkNIDN(List_Dosen L, long long NIDN){
     adr_Dosen P = L.first;
     while (P != NULL){
         if (P->info.NIDN == NIDN){

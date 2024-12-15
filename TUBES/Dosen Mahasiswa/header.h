@@ -4,13 +4,13 @@
 #include <iomanip>
 using namespace std;
 struct infotype_Mahasiswa{
-    int NIM;
+    long long NIM;
     string nama;
     float IPK;
 };
 struct infotype_Dosen{
     string kode;
-    int NIDN;
+    long long NIDN;
     string nama;
 };
 typedef string infotype_Relasi;
@@ -73,6 +73,6 @@ void editMahasiswa(List_Relasi &L, adr_Mahasiswa P, adr_Dosen Q, adr_Dosen R);
 void menu(List_Relasi &Lr, List_Dosen &Ld, List_Mahasiswa &Lm);
 void deleteRelasiMahasiswa(List_Relasi &L, adr_Mahasiswa &P);
 void deleteRelasiDosen(List_Relasi &L, adr_Dosen &P);
-bool checkNIM(List_Mahasiswa L, int NIM);
-bool checkNIDN(List_Dosen L, int NIDN);
+bool checkNIM(List_Mahasiswa L, long long NIM);
+bool checkNIDN(List_Dosen L, long long NIDN);
 #endif // HEADER_H_INCLUDED
