@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1733546194 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\atlet pertadingan\main.cpp
+1733546486 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\atlet pertadingan\main.cpp
 	"header.h"
 
-1733546208 d:\kuliah\semester 3\std\source-code-smt-3\tubes\atlet pertadingan\header.h
+1733546418 d:\kuliah\semester 3\std\source-code-smt-3\tubes\atlet pertadingan\header.h
 	<iostream>
+
+1733546417 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\atlet pertadingan\source.cpp
+	"header.h"
 

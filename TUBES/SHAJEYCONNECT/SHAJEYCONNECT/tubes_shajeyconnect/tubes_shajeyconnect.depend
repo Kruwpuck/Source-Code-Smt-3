@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1734281487 source:c:\users\lenovo\documents\shajeyconnect\tubes_shajeyconnect\shajeyconnect.cpp
+	"shajeyconnect.h"
+
+1734271350 c:\users\lenovo\documents\shajeyconnect\tubes_shajeyconnect\shajeyconnect.h
+	<iostream>
+	<string>
+
+1734271320 source:c:\users\lenovo\documents\shajeyconnect\tubes_shajeyconnect\main.cpp
+	"shajeyconnect.h"
+
+1734321476 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\shajeyconnect\shajeyconnect\tubes_shajeyconnect\main.cpp
+	"shajeyconnect.h"
+
+1734321476 d:\kuliah\semester 3\std\source-code-smt-3\tubes\shajeyconnect\shajeyconnect\tubes_shajeyconnect\shajeyconnect.h
+	<iostream>
+	<string>
+
+1734321476 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\shajeyconnect\shajeyconnect\tubes_shajeyconnect\shajeyconnect.cpp
+	"shajeyconnect.h"
+
