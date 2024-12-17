@@ -13,7 +13,6 @@ struct infotype_Dosen{
     long long NIDN;
     string nama;
 };
-typedef string infotype_Relasi;
 typedef struct elm_Mahasiswa *adr_Mahasiswa;
 typedef struct elm_Dosen *adr_Dosen;
 typedef struct elm_Relasi *adr_Relasi;
@@ -30,7 +29,6 @@ struct elm_Relasi{
     adr_Mahasiswa next_Mahasiswa;
     adr_Dosen next_Dosen;
     adr_Relasi next_Relasi;
-    infotype_Relasi info;
 };
 struct List_Mahasiswa{
     adr_Mahasiswa first;
@@ -38,7 +36,6 @@ struct List_Mahasiswa{
 };
 struct List_Relasi{
     adr_Relasi first;
-    adr_Relasi last;
 };
 struct List_Dosen{
     adr_Dosen first;
@@ -75,4 +72,5 @@ void deleteRelasiMahasiswa(List_Relasi &L, adr_Mahasiswa &P);
 void deleteRelasiDosen(List_Relasi &L, adr_Dosen &P);
 bool checkNIM(List_Mahasiswa L, long long NIM);
 bool checkNIDN(List_Dosen L, long long NIDN);
+bool checkRelation(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q);
 #endif // HEADER_H_INCLUDED

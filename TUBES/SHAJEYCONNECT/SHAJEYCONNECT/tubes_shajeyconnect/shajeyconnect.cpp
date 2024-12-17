@@ -1,26 +1,26 @@
 #include "shajeyconnect.h"
 
-
 void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     adr_Relasi R;
-    adr_Dosen P,Q;
-    adr_Mahasiswa C,D;
-    infotype_Relasi dataR;
+    adr_Dosen P, Q;
+    adr_Mahasiswa C, D;
     infotype_Dosen dataP;
     infotype_Mahasiswa dataC;
     long long pilihan;
-    cout << "------------------------------------------------------------" << endl;
-    cout << "|   SPADM III Sistem Pencatatan Akademik Dosen-Mahasiswa   |" << endl;
-    cout << "------------------------------------------------------------" << endl;
-    cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
-    cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-    cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
-    cout << "------------------------------------------------------------" << endl;
-    cout << "|   1. Data Dosen                                          |" << endl;
-    cout << "|   2. Data Mahasiswa                                      |" << endl;
-    cout << "|   3. Data Relasi                                         |" << endl;
-    cout << "|   4. Exit                                                |" << endl;
-    cout << "------------------------------------------------------------" << endl;
+    cout << "**========================================================**" << endl;
+    cout << "|           SELAMAT DATANG DI SHAJEYCONNECT APPS           |" << endl;
+    cout << "|     Sistem Data Akademik Mahasiswa-Dosen Terintegrasi    |" << endl;
+    cout << "**========================================================**" << endl;
+    cout << "|                Galuh Ajeng  // 103032300087              |" << endl;
+    cout << "|            Shania Rahmalia //  103032300018              |" << endl;
+    cout << "**========================================================**" << endl;
+    cout << "|                       PILIHAN MENU                       |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|   [1] Data dosen                                         |" << endl;
+    cout << "|   [2] Data mahasiswa                                     |" << endl;
+    cout << "|   [3] Data relasi                                        |" << endl;
+    cout << "|   [4] Exit                                               |" << endl;
+    cout << "**========================================================**" << endl;
     cout << "Masukkan pilihan: ";
     cin >> pilihan;
     cout << endl;
@@ -28,30 +28,26 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         return ;
     }
     while (pilihan < 1 || pilihan > 4){
-        cout << "------------------------------------------------------------" << endl;
+        cout << "**========================================================**" << endl;
         cout << "|                        INPUT INVALID                     |" << endl;
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
-        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "|                SILAHKAN KEMBALI MEMILIH MENU             |" << endl;
+        cout << "**========================================================**" << endl;
+        cout << "|                       PILIHAN MENU                       |" << endl;
+        cout << "**========================================================**" << endl;
         cout << "|   1. Data Dosen                                          |" << endl;
         cout << "|   2. Data Mahasiswa                                      |" << endl;
         cout << "|   3. Data Relasi                                         |" << endl;
-        cout << "|   4. Keluar                                              |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "|   4. Exit                                                |" << endl;
+        cout << "**========================================================**" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
     }
     if (pilihan == 1){
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|                        MENU Dosen                        |" << endl;
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
-        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "|                        MENU DOSEN                        |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "|   1. Menambahkan Dosen                                   |" << endl;
         cout << "|   2. Menghapus Dosen                                     |" << endl;
         cout << "|   3. Mencari Dosen                                       |" << endl;
@@ -59,8 +55,11 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "|   5. Total Dosen Tanpa Mahasiswa                         |" << endl;
         cout << "|   6. Total Mahasiswa Dari Dosen Tertentu                 |" << endl;
         cout << "|   7. Menampilkan Mahasiswa dari Dosen Tertentu           |" << endl;
-        cout << "|   8. Kembali                                             |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "|   8. Exit                                                |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "|                SHAJEYCONNECT APPS @2024                  |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
@@ -72,7 +71,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             getline(cin, dataP.kode);
             cout << "Masukkan NIDN Dosen: ";
             cin >> dataP.NIDN;
-            while (!checkNIDN(Lp, dataP.NIDN) || dataP.NIDN <= 0){
+            while (!checkNIDN(Lp, dataP.NIDN) || dataP.NIDN <= 0 || dataP.NIDN == -0){
                 cout << "NIDN INVALID ATAU SUDAH ADA" << endl;
                 cout << "Masukkan NIDN Dosen: ";
                 cin >> dataP.NIDN;
@@ -82,7 +81,7 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             P->next_Dosen = NULL;
             insertDosen(Lp, P);
             cout << "Data Dosen berhasil ditambahkan" << endl;
-        }else if(pilihan == 2){
+        } else if(pilihan == 2){
             P = NULL;
             deleteDosen(Lp, P);
             if (P != NULL){
@@ -90,41 +89,38 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
                 cout << "Elemen List Dosen "<< P->info.nama << " telah berhasil dihapus" << endl;
                 delete P;
             }
-        }else if(pilihan == 3){
+        } else if(pilihan == 3){
             findDosen(Lp, P);
-        }else if(pilihan == 4){
+        } else if(pilihan == 4){
             showDosen(Lp);
-        }else if(pilihan == 5){
+        } else if(pilihan == 5){
             hitungDosenTanpaMahasiswa(Lr, Lp);
-        }else if(pilihan == 6){
+        } else if(pilihan == 6){
             findDosen(Lp, P);
             if (P == NULL){
                 cout << "Data Dosen tidak ditemukan" << endl;
                 menu(Lr, Lp, Lc);
-            }else{
+            } else {
                 hitungMahasiswa(Lr, P);
             }
-        }else if(pilihan == 7){
+        } else if(pilihan == 7){
             findDosen(Lp, P);
             if (P == NULL){
                 cout << "Data Dosen tidak ditemukan" << endl;
                 menu(Lr, Lp, Lc);
-            }else{
+            } else {
                 showMahasiswa_dariDosen(Lr, P);
             }
-        }else if(pilihan == 8){
+        } else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
-        }else{
+        } else {
             cout << "Pilihan tidak valid" << endl;
         }
-    }else if(pilihan == 2){
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|                         MENU Mahasiswa                   |" << endl;
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
-        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini    //   103032330031         |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+    } else if(pilihan == 2){
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "|                     MENU MAHASISWA                       |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "|   1. Menambahkan Mahasiswa                               |" << endl;
         cout << "|   2. Menghapus Mahasiswa                                 |" << endl;
         cout << "|   3. Mencari Mahasiswa                                   |" << endl;
@@ -132,8 +128,11 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "|   5. Total Mahasiswa Tanpa Dosen                         |" << endl;
         cout << "|   6. Total Dosen Dari Mahasiswa Tertentu                 |" << endl;
         cout << "|   7. Menampilkan Dosen dari Mahasiswa Tertentu           |" << endl;
-        cout << "|   8. Kembali                                             |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "|   8. Exit                                                |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "|                SHAJEYCONNECT APPS @2024                  |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
@@ -143,15 +142,15 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             getline(cin, dataC.nama);
             cout << "Masukkan IPK Mahasiswa: ";
             cin >> dataC.IPK;
-            while (dataC.IPK < 0 || dataC.IPK > 4){
+            while (dataC.IPK < 0 || dataC.IPK > 4 || dataC.IPK == -0){
                 cout << "IPK INVALID" << endl;
                 cout << "Masukkan IPK Mahasiswa: ";
                 cin >> dataC.IPK;
             }
             cout << "Masukkan NIM Mahasiswa: ";
             cin >> dataC.NIM;
-            while (!checkNIM(Lc, dataC.NIM) || dataC.NIM <= 0){
-                cout << "NIM sudah ada" << endl;
+            while (!checkNIM(Lc, dataC.NIM) || dataC.NIM <= 0 || dataC.NIM == -0){
+                cout << "NIM INVALID ATAU SUDAH ADA" << endl;
                 cin >> dataC.NIM;
             }
             C = new elm_Mahasiswa;
@@ -160,48 +159,45 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             C->prev_Mahasiswa = NULL;
             insertMahasiswa(Lc, C);
             cout << "Data Mahasiswa berhasil ditambahkan" << endl;
-        }else if(pilihan == 2){
+        } else if(pilihan == 2){
             deleteMahasiswa(Lc, C);
             if (C != NULL){
                 deleteRelasiMahasiswa(Lr, C);
                 cout << "Mahasiswa dengan nama: " << C->info.nama  << " telah berhasil dihapus" << endl;
                 delete C;
             }
-        }else if(pilihan == 3){
+        } else if(pilihan == 3){
             findMahasiswa(Lc, C);
-        }else if(pilihan == 4){
+        } else if(pilihan == 4){
             showMahasiswa(Lc);
-        }else if(pilihan == 5){
+        } else if(pilihan == 5){
             hitungMahasiswaTanpaDosen(Lr, Lc);
-        }else if(pilihan == 6){
+        } else if(pilihan == 6){
             findMahasiswa(Lc, C);
             if (C == NULL){
                 cout << "Data Mahasiswa tidak ditemukan" << endl;
                 menu(Lr, Lp, Lc);
-            }else{
+            } else {
                 hitungDosen(Lr, C);
             }
-        }else if(pilihan == 7){
+        } else if(pilihan == 7){
             findMahasiswa(Lc, C);
             if (C == NULL){
                 cout << "Data Mahasiswa tidak ditemukan" << endl;
                 menu(Lr, Lp, Lc);
-            }else{
+            } else {
                 showDosen_dariMahasiswa(Lr, C);
             }
-        }else if(pilihan == 8){
+        } else if(pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
-        }else{
+        } else {
             cout << "Pilihan tidak valid" << endl;
         }
-    }else if (pilihan == 3){
-        cout << "------------------------------------------------------------" << endl;
+    } else if (pilihan == 3){
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "|                        MENU RELASI                       |" << endl;
-        cout << "------------------------------------------------------------" << endl;
-        cout << "|        Ihab Hasanain Akmal     //   103032330054         |" << endl;
-        cout << "|       Faisal Ihsan Santoso     //   103032300152         |" << endl;
-        cout << "|         Neng Intan Nuraeini     //   103032330031         |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "|   1. Menambahkan Relasi                                  |" << endl;
         cout << "|   2. Menghapus Relasi                                    |" << endl;
         cout << "|   3. Check Relasi                                        |" << endl;
@@ -209,8 +205,11 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
         cout << "|   5. Menampilkan Mahasiswa & Relasinya                   |" << endl;
         cout << "|   6. Edit Relasi Dari Dosen                              |" << endl;
         cout << "|   7. Edit Relasi Dari Mahasiswa                          |" << endl;
-        cout << "|   8. Kembali                                             |" << endl;
-        cout << "------------------------------------------------------------" << endl;
+        cout << "|   8. Exit                                                |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
+        cout << "|                SHAJEYCONNECT APPS @2024                  |" << endl;
+        cout << "+----------------------------------------------------------+" << endl;
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cout << endl;
@@ -221,82 +220,82 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
                 if (P == NULL){
                     cout << "Data Dosen tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else if ( C == NULL){
+                } else if ( C == NULL){
                     cout << "Data Mahasiswa tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else{
                     menu(Lr, Lp, Lc);
                 }
-            }else{
-                cout << "Masukkan Info Relasi: ";
-                cin.ignore();
-                getline(cin, dataR);
-                R = new elm_Relasi;
-                R->info = dataR;
-                R->next_Dosen = P;
-                R->next_Mahasiswa = C;
-                R->next_Relasi = NULL;
-                insertRelasi(Lr, R);
-                cout << "Relasi berhasil ditambahkan" << endl;
+            } else {
+                if (!checkRelation(Lr, C, P)){
+                    cout << "Relasi sudah ada" << endl;
+                } else {
+                    R = new elm_Relasi;
+                    R->next_Dosen = P;
+                    R->next_Mahasiswa = C;
+                    R->next_Relasi = NULL;
+                    insertRelasi(Lr, R);
+                    cout << "Relasi berhasil ditambahkan" << endl;
+                }
             }
-        }else if (pilihan == 2){
+        } else if (pilihan == 2){
             findDosen(Lp, P);
             findMahasiswa(Lc, C);
             if (P == NULL || C == NULL){
                 if (P == NULL){
                     cout << "Data Dosen tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else if (C == NULL){
+                } else if (C == NULL){
                     cout << "Data Mahasiswa tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else {
                     menu(Lr, Lp, Lc);
                 }
-            }else{
+            } else {
                 checkRelasi(Lr, C, P, R);
                 if (R == NULL){
                     cout << "Relasi tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else {
                     deleteRelasi(Lr, R);
                     delete R;
                     cout << "Relasi berhasil dihapus" << endl;
                 }
             }
-        }else if (pilihan == 3){
+        } else if (pilihan == 3){
             findDosen(Lp, P);
             findMahasiswa(Lc, C);
             if (P == NULL || C == NULL){
                 if (P == NULL){
                     cout << "Data Dosen tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else if (C == NULL){
+                } else if (C == NULL){
                     cout << "Data Mahasiswa tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else {
                     menu(Lr, Lp, Lc);
                 }
-            }else{
+            } else {
                 checkRelasi(Lr, C, P, R);
             }
-        }else if (pilihan == 4){
+        } else if (pilihan == 4){
             showAll_RelasiDosen(Lp, Lr);
-        }else if (pilihan == 5){
+        } else if (pilihan == 5){
             showAll_RelasiMahasiswa(Lc, Lr);
-        }else if (pilihan == 6){
+        } else if (pilihan == 6){
             findDosen(Lp, P);
             findMahasiswa(Lc, C);
             if (P == NULL || C == NULL){
                 if (P == NULL){
                     cout << "Data Dosen tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else if (C == NULL){
+                } else if (C == NULL){
                     cout << "Data Mahasiswa tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else {
                     menu(Lr, Lp, Lc);
                 }
-            }else{
+            } else {
                 checkRelasi(Lr, C, P, R);
                 if (R != NULL){
                     findMahasiswa(Lc, D);
@@ -304,20 +303,20 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
                     cout << "Relasi berhasil diubah" << endl;
                 }
             }
-        }else if (pilihan == 7){
+        } else if (pilihan == 7){
             findMahasiswa(Lc, C);
             findDosen(Lp, P);
             if ( C == NULL || P == NULL){
                 if (C == NULL){
                     cout << "Data Mahasiswa tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else if (P == NULL){
+                } else if (P == NULL){
                     cout << "Data Dosen tidak ditemukan" << endl;
                     menu(Lr, Lp, Lc);
-                }else{
+                } else{
                     menu(Lr, Lp, Lc);
                 }
-            }else{
+            } else {
                 checkRelasi(Lr, C, P, R);
                 if (R != NULL){
                     findDosen(Lp, Q);
@@ -325,46 +324,53 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
                     cout << "Relasi berhasil diubah" << endl;
                 }
             }
-        }else if (pilihan == 8){
+        } else if (pilihan == 8){
             cout << "Kembali ke menu utama" << endl;
-        }else{
+        } else {
             cout << "Pilihan tidak valid" << endl;
         }
     }
     menu(Lr, Lp, Lc);
 }
+
 void insertDosen(List_Dosen &L, adr_Dosen P){
     // point A
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         L.first = P;
-    }else{
+    } else {
         P->next_Dosen = L.first;
         L.first = P;
     }
 }
+
 void insertMahasiswa(List_Mahasiswa &L, adr_Mahasiswa P){
     // point B
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         L.first = P;
         L.last = P;
-    }else{
+    } else {
         L.last->next_Mahasiswa = P;
         P->prev_Mahasiswa = L.last;
         L.last = P;
     }
 }
+
 void insertRelasi(List_Relasi &L, adr_Relasi P){
     // point C
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         L.first = P;
-        L.last = P;
-    }else{
+    } else {
         P->next_Relasi = L.first;
         L.first = P;
     }
 }
+
 void deleteDosen(List_Dosen &L, adr_Dosen &P){
     // point D
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -376,14 +382,16 @@ void deleteDosen(List_Dosen &L, adr_Dosen &P){
     }
     if(P == L.first){
         deleteFirstDosen(L, P);
-    }else if (P->next_Dosen == NULL){
+    } else if (P->next_Dosen == NULL){
         deleteLastDosen(L, P);
-    }else{
+    } else {
         deleteAfterDosen(L, P);
     }
 }
+
 void deleteMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     // point E
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -395,21 +403,23 @@ void deleteMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     }
     if (P == L.first){
         deleteFirstMahasiswa(L, P);
-    }else if (P == L.last){
+    } else if (P == L.last){
         deleteLastMahasiswa(L, P);
-    }else{
+    } else{
         deleteAfterMahasiswa(L, P);
     }
 }
+
 void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
     // point F
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
-    }else{
+    } else {
         if(P == L.first){
             L.first = P->next_Relasi;
             P->next_Relasi = NULL;
-        }else{
+        } else {
             adr_Relasi Q = L.first;
             while(Q->next_Relasi != P){
                 Q = Q->next_Relasi;
@@ -421,13 +431,15 @@ void deleteRelasi(List_Relasi &L ,adr_Relasi &P){
         }
     }
 }
+
 void findDosen(List_Dosen L, adr_Dosen &P){
     // point G
+    // PIC : Shania Rahmalia
     if (L.first == NULL){
         cout << "Data Dosen kosong" << endl;
         P = NULL;
         return;
-    }else{
+    } else {
         long long NIDN;
         cout << "Masukkan NIDN Dosen: ";
         cin >> NIDN;
@@ -441,19 +453,21 @@ void findDosen(List_Dosen L, adr_Dosen &P){
                 cout << "|   NIDN Dosen: " << P->info.NIDN << endl;
                 cout << endl << "------------------------------------------------------------" << endl;
                 return;
-            }else{
+            } else {
                 P = P->next_Dosen;
             }
         }
     }
 }
+
 void findMahasiswa(List_Mahasiswa L, adr_Mahasiswa &P){
     // point H
+    // PIC : Galuh Ajeng
     if (L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         P = NULL;
         return;
-    }else{
+    } else {
         long long NIM;
         cout << "Masukkan NIM Mahasiswa: ";
         cin >> NIM;
@@ -467,23 +481,24 @@ void findMahasiswa(List_Mahasiswa L, adr_Mahasiswa &P){
                 cout << "|   NIM Mahasiswa: " << P->info.NIM << endl;
                 cout << endl << "------------------------------------------------------------" << endl;
                 return;
-            }else{
+            } else {
                 P = P->next_Mahasiswa;
             }
         }
     }
 }
+
 void checkRelasi(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q, adr_Relasi &R){
     // point I
+    // PIC : Galuh Ajeng
     R = L.first;
     while(R != NULL){
         if(R->next_Mahasiswa == P && R->next_Dosen == Q){
             cout << endl << "------------------------------------------------------------" << endl;
             cout << "|   Relasi ditemukan" << endl;
-            cout << "|   Info Relasi: " << R->info << endl;
             cout << endl << "------------------------------------------------------------" << endl;
             return;
-        }else{
+        } else {
             R = R->next_Relasi;
         }
     }
@@ -491,11 +506,13 @@ void checkRelasi(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q, adr_Relasi &R){
             cout << "|   Relasi Tidak Ditemukan" << endl;
     cout << endl << "------------------------------------------------------------" << endl;
 }
+
 void showDosen(List_Dosen L){
     // point J
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Dosen kosong" << endl;
-    }else{
+    } else {
         adr_Dosen P = L.first;
         cout << endl << "------------------------------------------------------------" << endl;
         while(P != NULL){
@@ -507,11 +524,13 @@ void showDosen(List_Dosen L){
         }
     }
 }
+
 void showMahasiswa(List_Mahasiswa L){
     // point K
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
-    }else{
+    } else {
         adr_Mahasiswa P = L.first;
         cout << endl << "------------------------------------------------------------" << endl;
         while(P != NULL){
@@ -523,8 +542,10 @@ void showMahasiswa(List_Mahasiswa L){
         }
     }
 }
+
 void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
     // point L
+    // PIC : Shania Rahmalia
     if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
         return;
@@ -544,7 +565,6 @@ void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
             cout << "|   Nama Mahasiswa: " << setw(39) << left << R->next_Mahasiswa->info.nama << "|" << endl;
             cout << "|   IPK Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.IPK << "|" << endl;
             cout << "|   NIM Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.NIM << "|" << endl;
-            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
             cout << "------------------------------------------------------------" << endl;
             count++;
         }
@@ -558,6 +578,7 @@ void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
 
 void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
     // point M
+    // PIC : Galuh Ajeng
     if(L.first == NULL) {
         cout << "Data Relasi kosong" << endl;
         return;
@@ -577,7 +598,6 @@ void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
             cout << "|   Nama Dosen: " << setw(43) << left << R->next_Dosen->info.nama << "|" << endl;
             cout << "|   Kode Dosen: " << setw(43) << left << R->next_Dosen->info.kode << "|" << endl;
             cout << "|   NIDN Dosen: " << setw(43) << left << R->next_Dosen->info.NIDN << "|" << endl;
-            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
             cout << "------------------------------------------------------------" << endl;
             count++;
         }
@@ -591,6 +611,7 @@ void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
 
 void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr) {
     // point N
+    // PIC : Shania Rahmalia
     if(Lp.first == NULL) {
         cout << "Data Dosen kosong" << endl;
         return;
@@ -609,6 +630,7 @@ void showAll_RelasiDosen(List_Dosen Lp, List_Relasi Lr) {
 
 void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
     // point O
+    // PIC : Galuh Ajeng
     if(Lc.first == NULL) {
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -624,11 +646,13 @@ void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
         P = P->next_Mahasiswa;
     }
 }
+
 void hitungMahasiswa(List_Relasi L, adr_Dosen P){
     // point P
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
-    }else{
+    } else {
         adr_Relasi R = L.first;
         long long hitung = 0;
         while(R != NULL){
@@ -640,11 +664,13 @@ void hitungMahasiswa(List_Relasi L, adr_Dosen P){
         cout << "|   Total Mahasiswa di Dosen " << P->info.nama << ": " << hitung << endl;
     }
 }
+
 void hitungDosen(List_Relasi L, adr_Mahasiswa P){
     // point Q
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Relasi kosong" << endl;
-    }else{
+    } else {
         adr_Relasi R = L.first;
         long long hitung = 0;
         while(R != NULL){
@@ -656,11 +682,13 @@ void hitungDosen(List_Relasi L, adr_Mahasiswa P){
         cout << "|   Total Dosen dari Mahasiswa " << P->info.nama << ": " << hitung << endl;
     }
 }
+
 void hitungDosenTanpaMahasiswa(List_Relasi Lr, List_Dosen Lp){
     // point R
+    // PIC : Galuh Ajeng
     if(Lr.first == NULL){
         showDosen(Lp);
-    }else{
+    } else {
         adr_Dosen P = Lp.first;
         bool found;
         long long hitung = 0;
@@ -681,11 +709,13 @@ void hitungDosenTanpaMahasiswa(List_Relasi Lr, List_Dosen Lp){
         cout << "|   Total Dosen yang tidak memiliki Mahasiswa: " << hitung << endl;
     }
 }
+
 void hitungMahasiswaTanpaDosen(List_Relasi Lr, List_Mahasiswa Lc){
     // point S
+    // PIC	: Shania Rahmalia
     if(Lr.first == NULL){
         showMahasiswa(Lc);
-    }else{
+    } else {
         adr_Mahasiswa P = Lc.first;
         bool found;
         long long hitung = 0;
@@ -707,19 +737,25 @@ void hitungMahasiswaTanpaDosen(List_Relasi Lr, List_Mahasiswa Lc){
         cout << "|   Total Mahasiswa yang tidak memiliki Dosen: " << hitung << endl;
     }
 }
+
 void editDosen(List_Relasi &L, adr_Dosen P, adr_Mahasiswa Q, adr_Mahasiswa R){
     // point T
+    // PIC : Shania Rahmalia
     adr_Relasi T = NULL;
     checkRelasi(L, Q, P, T);
     T->next_Mahasiswa = R;
 }
+
 void editMahasiswa(List_Relasi &L, adr_Mahasiswa P, adr_Dosen Q, adr_Dosen R){
     // point T
+    // PIC : Galuh Ajeng
     adr_Relasi T = NULL;
     checkRelasi(L, P, Q, T);
     T->next_Dosen = R;
 }
+
 void deleteRelasiMahasiswa(List_Relasi &L, adr_Mahasiswa &P){
+    // PIC : Galuh Ajeng
     adr_Relasi R = L.first;
     while (R != NULL){
         if (R->next_Mahasiswa == P){
@@ -729,18 +765,22 @@ void deleteRelasiMahasiswa(List_Relasi &L, adr_Mahasiswa &P){
         R = R->next_Relasi;
     }
 }
+
 void deleteRelasiDosen(List_Relasi &L, adr_Dosen &P){
+    // PIC : Shania Rahmalia
     adr_Relasi R = L.first;
     while (R != NULL){
         if (R->next_Dosen == P){
             deleteRelasi(L, R);
             R = L.first;
-        }else{
+        } else {
             R = R->next_Relasi;
         }
     }
 }
+
 void deleteFirstMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -748,13 +788,15 @@ void deleteFirstMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     if(L.first == L.last){
         L.first = NULL;
         L.last = NULL;
-    }else{
+    } else {
         L.first = P->next_Mahasiswa;
         P->next_Mahasiswa = NULL;
         L.first->prev_Mahasiswa = NULL;
     }
 }
+
 void deleteLastMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -762,13 +804,15 @@ void deleteLastMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     if(L.first == L.last){
         L.first = NULL;
         L.last = NULL;
-    }else{
+    } else {
         L.last = P->prev_Mahasiswa;
         P->prev_Mahasiswa = NULL;
         L.last->next_Mahasiswa = NULL;
     }
 }
+
 void deleteAfterMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
+    // PIC : Galuh Ajeng
     if(L.first == NULL){
         cout << "Data Mahasiswa kosong" << endl;
         return;
@@ -778,26 +822,30 @@ void deleteAfterMahasiswa(List_Mahasiswa &L, adr_Mahasiswa &P){
     P->next_Mahasiswa = NULL;
     P->prev_Mahasiswa = NULL;
 }
+
 void deleteFirstDosen(List_Dosen &L, adr_Dosen &P){
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Dosen kosong" << endl;
         return;
     }
     if(L.first->next_Dosen == NULL){
         L.first = NULL;
-    }else{
+    } else {
         L.first = P->next_Dosen;
         P->next_Dosen = NULL;
     }
 }
+
 void deleteLastDosen(List_Dosen &L, adr_Dosen &P){
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Dosen kosong" << endl;
         return;
     }
     if(L.first->next_Dosen == NULL){
         L.first = NULL;
-    }else{
+    } else {
         adr_Dosen Q = L.first;
         while (Q->next_Dosen != P){
             Q = Q->next_Dosen;
@@ -805,7 +853,9 @@ void deleteLastDosen(List_Dosen &L, adr_Dosen &P){
         Q->next_Dosen = NULL;
     }
 }
+
 void deleteAfterDosen(List_Dosen &L, adr_Dosen &P){
+    // PIC : Shania Rahmalia
     if(L.first == NULL){
         cout << "Data Dosen kosong" << endl;
         return;
@@ -817,7 +867,9 @@ void deleteAfterDosen(List_Dosen &L, adr_Dosen &P){
     Q->next_Dosen = P->next_Dosen;
     P->next_Dosen = NULL;
 }
+
 bool checkNIM(List_Mahasiswa L, long long NIM){
+    // PIC : Galuh Ajeng
     adr_Mahasiswa P = L.first;
     while (P != NULL){
         if (P->info.NIM == NIM){
@@ -827,13 +879,26 @@ bool checkNIM(List_Mahasiswa L, long long NIM){
     }
     return true;
 }
+
 bool checkNIDN(List_Dosen L, long long NIDN){
+    // PIC : Shania Rahmalia
     adr_Dosen P = L.first;
     while (P != NULL){
         if (P->info.NIDN == NIDN){
             return false;
         }
         P = P->next_Dosen;
+    }
+    return true;
+}
+
+bool checkRelation(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q){
+    adr_Relasi R = L.first;
+    while (R != NULL){
+        if (R->next_Mahasiswa == P && R->next_Dosen == Q){
+            return false;
+        }
+        R = R->next_Relasi;
     }
     return true;
 }
