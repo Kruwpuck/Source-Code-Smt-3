@@ -17,14 +17,15 @@ void printDescendant_103032330054(adrNode root, infotype x);
 int sumNode_103032330054(adrNode root);
 int countLeaves_103032330054(adrNode root);
 int heightTree_103032330054(adrNode root);
-void printInOrder_103032330054(adrNode root); 
-void printPostOrder_103032330054(adrNode root);  
-void printLeftMostNode_103032330054(adrNode root); 
-void printRightMostNode_103032330054(adrNode root); 
-int countNode_103032330054(adrNode root); 
-void printAncestor_103032330054_103032330054(adrNode root, infotype x); 
-int countInternalNode(adrNode root); 
-int depthNode_103032330054(adrNode root, infotype n); 
-int levelNode_103032330054(adrNode root, infotype n); 
+void printInOrder_103032330054(adrNode root);
+void printPostOrder_103032330054(adrNode root);
+void printLeftMostNode_103032330054(adrNode root);
+void printRightMostNode_103032330054(adrNode root);
+int countNode_103032330054(adrNode root);
+void printAncestor_103032330054_103032330054(adrNode root, infotype x);
+int countInternalNode(adrNode root);
+int depthNode_103032330054(adrNode root, infotype n);
+int levelNode_103032330054(adrNode root, infotype n);
+bool isComplete(adrNode root);
 
 #endif // TREE_H_INCLUDED

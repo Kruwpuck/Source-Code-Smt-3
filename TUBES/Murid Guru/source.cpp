@@ -292,7 +292,7 @@ void insertRelasi(List_Relasi &L, adr_Relasi P){
 }
 void deleteGuru(List_Guru &L, adr_Guru &P){
     if(L.first == NULL){
-        cout << "Data Murid kosong" << endl;
+        cout << "Data Guru kosong" << endl;
         return;
     }
     findGuru(L, P);

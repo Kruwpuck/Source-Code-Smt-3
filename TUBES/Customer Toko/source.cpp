@@ -7,7 +7,7 @@ void Menu(List_Toko &Lt, List_Customer &Lc){
     infotype_Customer dataC;
     int pilihan;
     cout << "================================================================" << endl;
-    cout << "[]                     (JUDUL APLIKASI)                       []" << endl;
+    cout << "[]                   Bakhir Zakaria Mart                      []" << endl;
     cout << "================================================================" << endl;
     cout << "[]         Aidil Muhammad Bakir       //   103032300183       []" << endl;
     cout << "[]          Yafi Zakaria RIfqi        //   103032300082       []" << endl;

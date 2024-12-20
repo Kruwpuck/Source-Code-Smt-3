@@ -156,3 +156,12 @@ int depthNode_103032330054(adrNode root, infotype n){
 int levelNode_103032330054(adrNode root, infotype n){
     return depthNode_103032330054(root, n) + 1;
 }
+bool isComplete(adrNode root){
+    if (root->left == NULL && root->right == NULL){
+        return true;
+    }else if (root->left != NULL && root->right != NULL){
+        return true && isComplete(root->right) && isComplete(root->left);
+    }else{
+        return false;
+    }
+}

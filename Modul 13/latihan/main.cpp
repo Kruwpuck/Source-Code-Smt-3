@@ -1,15 +1,15 @@
 #include "Tree.h"
 int main()
 {
-    int x[12] = {6,3,8,1,5,7,9,0,2,4,15,11};
+    int x[7] = {6,3,8,1,5,7,9};
     adrNode root = NULL;
     /* Tampilkan isi dari array */
-    for (int i=0; i<12; i++){
+    for (int i=0; i<7; i++){
         cout << x[i] << " ";
     }
     /* 1. Tambahkan setiap elemen array x kedalam BST secara berurutan */
     /* sehingga dihasilkan BST seperti Gambar 1, gunakan looping*/
-    for (int i=0; i<12; i++){
+    for (int i=0; i<7; i++){
         insertNode_103032330054(root, newNode_103032330054(x[i]));
     }
     /* 2. Tampilan node dari BST secara In-Order, Pre-Order, dan Post-Order*/
@@ -52,5 +52,6 @@ int main()
     cout << depthNode_103032330054(root, 15) << endl;
     cout << endl << "Level of Node 15: " << endl;
     cout << levelNode_103032330054(root, 15) << endl;
+    cout << isComplete(root);
     return 0;
 }

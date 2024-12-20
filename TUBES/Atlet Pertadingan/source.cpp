@@ -225,10 +225,11 @@ void menu(List_Relasi &Lr, List_Pertandingan &Lp, List_Atlet &La){
             checkRelasi(Lr, C, P, R);
             if (R == NULL){
                 cout << "Relasi tidak ditemukan" << endl;
-            }else{}
-            deleteRelasi(Lr, R);
-            delete R;
-            cout << "Relasi berhasil dihapus" << endl;
+            }else{
+                deleteRelasi(Lr, R);
+                delete R;
+                cout << "Relasi berhasil dihapus" << endl;
+            }
         }else if (pilihan == 3){
             findPertandingan(Lp, P);
             while (P == NULL){
@@ -297,7 +298,7 @@ void insertPertandingan(List_Pertandingan &L, adr_Pertandingan P){
 }
 void insertAtlet(List_Atlet &L, adr_Atlet P){
     if(L.first == NULL){
-        L.first = P;
+        L.first = P; 
         L.last = P;
     }else{
         L.last->next_Atlet = P;
@@ -603,7 +604,7 @@ void hitungPertandinganTanpaAtlet(List_Relasi Lr, List_Pertandingan Lp){
                 R = R->next_Relasi;
             }
             if (!found){
-                hitung++;
+                hitung = hitung + 1;
             }
             P = P->next_Pertandingan;
         }

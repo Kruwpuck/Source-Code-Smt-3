@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1734722774 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko ecommerce\main.cpp
+	"header.h"
+
+1734723382 d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko ecommerce\header.h
+	<iostream>
+
+1734723613 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko ecommerce\source.cpp
+	"header.h"
+
