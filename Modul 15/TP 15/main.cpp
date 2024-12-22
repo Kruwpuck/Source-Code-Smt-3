@@ -17,7 +17,7 @@ int main()
         if (root != NULL){
             printInOrder_103032330054(root);
             cout << endl;
-            P = findNode_103032330054(root, y[i]);
+            P = newNode_103032330054(y[i]);
             DeleteNode_103032330054(root, P);
         }else{
             cout << "(kosong)";

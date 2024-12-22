@@ -14,6 +14,5 @@ void insertNode_103032330054(adrNode &root, adrNode p);
 void DeleteNode_103032330054(adrNode &root, adrNode &p);
 void printInOrder_103032330054(adrNode root);
 adrNode findMin_103032330054(adrNode root);
-adrNode findNode_103032330054(adrNode root, infotype x);
 
 #endif // TREE_H_INCLUDED

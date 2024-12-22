@@ -58,14 +58,3 @@ void printInOrder_103032330054(adrNode root){
         printInOrder_103032330054(root->right);
     }
 }
-adrNode findNode_103032330054(adrNode root, infotype x){
-    if (root == NULL){
-        return NULL;
-    }else if (root->info == x){
-        return root;
-    }else if (x > root->info){
-        return findNode_103032330054(root->right, x);
-    }else{
-        return findNode_103032330054(root->left, x);
-    }
-}
