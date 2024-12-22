@@ -30,7 +30,7 @@ int main()
     cout << endl;
     cout << "Number of Leaves :" << endl;
     cout << countLeaves_103032330054(root);
-    /* 4. Tampilkan Tinggi dari Tree*/
+    /* 6. Tampilkan Tinggi dari Tree*/
     cout << endl << "Height of Tree :" << endl;
     cout << heightTree_103032330054(root);
     return 0;

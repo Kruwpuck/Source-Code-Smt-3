@@ -11,10 +11,9 @@ struct elm{
 };
 adrNode newNode_103032330054(infotype x);
 void insertNode_103032330054(adrNode &root, adrNode p);
+void DeleteNode_103032330054(adrNode &root, adrNode &p);
+void printInOrder_103032330054(adrNode root);
+adrNode findMin_103032330054(adrNode root);
 adrNode findNode_103032330054(adrNode root, infotype x);
-void printPreOrder_103032330054(adrNode root);
-void printDescendant_103032330054(adrNode root, infotype x);
-int sumNode_103032330054(adrNode root);
-int countLeaves_103032330054(adrNode root);
-int heightTree_103032330054(adrNode root);
+
 #endif // TREE_H_INCLUDED

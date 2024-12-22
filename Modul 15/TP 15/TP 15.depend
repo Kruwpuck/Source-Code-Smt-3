@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1734860599 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 15\tp 15\main.cpp
+	"Tree.h"
+
+1734860038 d:\kuliah\semester 3\std\source-code-smt-3\modul 15\tp 15\tree.h
+	<iostream>
+
+1734860570 source:d:\kuliah\semester 3\std\source-code-smt-3\modul 15\tp 15\tree.cpp
+	"Tree.h"
+
