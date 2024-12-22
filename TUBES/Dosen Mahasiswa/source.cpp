@@ -5,7 +5,6 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
     adr_Relasi R;
     adr_Dosen P,Q;
     adr_Mahasiswa C,D;
-    infotype_Relasi dataR;
     infotype_Dosen dataP;
     infotype_Mahasiswa dataC;
     long long pilihan;
@@ -228,16 +227,16 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
                     menu(Lr, Lp, Lc);
                 }
             }else{
-                cout << "Masukkan Info Relasi: ";
-                cin.ignore();
-                getline(cin, dataR);
-                R = new elm_Relasi;
-                R->info = dataR;
-                R->next_Dosen = P;
-                R->next_Mahasiswa = C;
-                R->next_Relasi = NULL;
-                insertRelasi(Lr, R);
-                cout << "Relasi berhasil ditambahkan" << endl;
+                if (!checkRelation(Lr,P,C)){
+                    cout << "Relasi sudah ada" << endl;
+                }else{
+                    R = new elm_Relasi;
+                    R->next_Dosen = P;
+                    R->next_Mahasiswa = C;
+                    R->next_Relasi = NULL;
+                    insertRelasi(Lr, R);
+                    cout << "Relasi berhasil ditambahkan" << endl;
+                }
             }
         }else if (pilihan == 2){
             findDosen(Lp, P);
@@ -480,7 +479,6 @@ void checkRelasi(List_Relasi L, adr_Mahasiswa P, adr_Dosen Q, adr_Relasi &R){
         if(R->next_Mahasiswa == P && R->next_Dosen == Q){
             cout << endl << "------------------------------------------------------------" << endl;
             cout << "|   Relasi ditemukan" << endl;
-            cout << "|   Info Relasi: " << R->info << endl;
             cout << endl << "------------------------------------------------------------" << endl;
             return;
         }else{
@@ -544,7 +542,6 @@ void showMahasiswa_dariDosen(List_Relasi L, adr_Dosen P) {
             cout << "|   Nama Mahasiswa: " << setw(39) << left << R->next_Mahasiswa->info.nama << "|" << endl;
             cout << "|   IPK Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.IPK << "|" << endl;
             cout << "|   NIM Mahasiswa: " << setw(40) << left << R->next_Mahasiswa->info.NIM << "|" << endl;
-            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
             cout << "------------------------------------------------------------" << endl;
             count++;
         }
@@ -577,7 +574,6 @@ void showDosen_dariMahasiswa(List_Relasi L, adr_Mahasiswa P) {
             cout << "|   Nama Dosen: " << setw(43) << left << R->next_Dosen->info.nama << "|" << endl;
             cout << "|   Kode Dosen: " << setw(43) << left << R->next_Dosen->info.kode << "|" << endl;
             cout << "|   NIDN Dosen: " << setw(43) << left << R->next_Dosen->info.NIDN << "|" << endl;
-            cout << "|   Info Relasi: " << setw(42) << left << R->info << "|" << endl;
             cout << "------------------------------------------------------------" << endl;
             count++;
         }
@@ -834,6 +830,17 @@ bool checkNIDN(List_Dosen L, long long NIDN){
             return false;
         }
         P = P->next_Dosen;
+    }
+    return true;
+}
+
+bool checkRelation(List_Relasi L, adr_Dosen P, adr_Mahasiswa Q){
+    adr_Relasi R = L.first;
+    while (R != NULL){
+        if (R->next_Dosen == P && R->next_Mahasiswa == Q){
+            return false;
+        }
+        R = R->next_Relasi;
     }
     return true;
 }
