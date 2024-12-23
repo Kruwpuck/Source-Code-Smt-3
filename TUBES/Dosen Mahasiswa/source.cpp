@@ -298,9 +298,14 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             }else{
                 checkRelasi(Lr, C, P, R);
                 if (R != NULL){
+                    cout << "Masukkan Nama Mahasiswa Baru: " << endl;
                     findMahasiswa(Lc, D);
-                    editDosen(Lr, P, C, D);
-                    cout << "Relasi berhasil diubah" << endl;
+                    if (checkRelation(Lr, P, D)){
+                        cout << "Relasi sudah ada" << endl;
+                    }else{
+                        editDosen(Lr, P, C, D);
+                        cout << "Relasi berhasil diubah" << endl;
+                    }
                 }
             }
         }else if (pilihan == 7){
@@ -319,9 +324,14 @@ void menu(List_Relasi &Lr, List_Dosen &Lp, List_Mahasiswa &Lc){
             }else{
                 checkRelasi(Lr, C, P, R);
                 if (R != NULL){
+                    cout << "Masukkan Nama Dosen Baru: " << endl;
                     findDosen(Lp, Q);
-                    editMahasiswa(Lr, C, P, Q);
-                    cout << "Relasi berhasil diubah" << endl;
+                    if (checkRelation(Lr, Q, C)){
+                        cout << "Relasi sudah ada" << endl;
+                    }else{
+                        editMahasiswa(Lr, C, P, Q);
+                        cout << "Relasi berhasil diubah" << endl;
+                    }
                 }
             }
         }else if (pilihan == 8){
@@ -611,11 +621,11 @@ void showAll_RelasiMahasiswa(List_Mahasiswa Lc, List_Relasi Lr) {
     }
 
     adr_Mahasiswa P = Lc.first;
-    cout << endl << "------------------------------------------------------------" << endl;
+    cout << endl << "============================================================" << endl;
     while(P != NULL) {
-        cout << "|   Nama Mahasiswa: " << setw(40) << left << P->info.nama << "|" << endl;
-        cout << "|   IPK Mahasiswa: " << setw(41) << left << P->info.IPK << "|" << endl;
-        cout << "|   NIM Mahasiswa: " << setw(41) << left << P->info.NIM << "|" << endl;
+        cout << "|*|   Nama Mahasiswa: " << setw(35) << left << P->info.nama << "|*|" << endl;
+        cout << "|*|   IPK Mahasiswa : " << setw(35) << left << P->info.IPK << "|*|" << endl;
+        cout << "|*|   NIM Mahasiswa : " << setw(35) << left << P->info.NIM << "|*|" << endl;
         showDosen_dariMahasiswa(Lr, P);
         P = P->next_Mahasiswa;
     }
