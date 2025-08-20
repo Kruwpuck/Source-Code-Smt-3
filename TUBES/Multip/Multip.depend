@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1755703344 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\multip\source.cpp
+	"header.h"
+
+1755702446 d:\kuliah\semester 3\std\source-code-smt-3\tubes\multip\header.h
+	<iostream>
+
+1755703321 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\multip\main.cpp
+	"header.h"
+

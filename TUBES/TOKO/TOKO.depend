@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1755695826 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko\main.cpp
+	"header.h"
+
+1755695987 d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko\header.h
+	<iostream>
+
+1755695866 source:d:\kuliah\semester 3\std\source-code-smt-3\tubes\toko\source.cpp
+	"header.h"
+
